@@ -7722,7 +7722,7 @@ function login(data) {
 }
 function MenuList(data) {
   return _request.default.request({
-    url: '/auth/getMenuList',
+    url: '/auth/getUniappMenuList',
     method: 'POST',
     data: data });
 
@@ -8830,6 +8830,26 @@ module.exports = g;
 
 /***/ }),
 
+/***/ 44:
+/*!**********************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/api/menu.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInstanceItemList = getEnrollProjectInstanceItemList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getEnrollProjectInstanceItemList(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInstanceItemList',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
 /***/ 5:
 /*!*******************************************************!*\
   !*** ./node_modules/@dcloudio/uni-stat/dist/index.js ***!
@@ -9752,7 +9772,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /*!****************************************************************!*\
   !*** D:/hbni/test/enroll-uniapp/components/uni-icons/icons.js ***!
   \****************************************************************/
@@ -9891,26 +9911,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 96:
-/*!**********************************************!*\
-  !*** D:/hbni/test/enroll-uniapp/api/menu.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInstanceItemList = getEnrollProjectInstanceItemList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function getEnrollProjectInstanceItemList(data) {
-  return _request.default.request({
-    url: '/enroll/getEnrollProjectInstanceItemList',
-    method: 'POST',
-    data: data });
-
-}
 
 /***/ })
 

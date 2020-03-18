@@ -93,7 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  "uni-section": () =>
+    __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 69))
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -131,10 +134,44 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
-//
-//
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _menu = __webpack_require__(/*! @/api/menu.js */ 44);var uniNoticeBar = function uniNoticeBar() {return __webpack_require__.e(/*! import() | components/uni-notice-bar/uni-notice-bar */ "components/uni-notice-bar/uni-notice-bar").then(__webpack_require__.bind(null, /*! @/components/uni-notice-bar/uni-notice-bar.vue */ 76));};var uniSection = function uniSection() {return __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 69));};var _default =
+{
+  components: { uniNoticeBar: uniNoticeBar, uniSection: uniSection },
+  data: function data() {
+    return {
+      instanceId: '',
+      itemList: [] };
+
+  },
+  onLoad: function onLoad(options) {var _this = this;
+    console.log(options.instanceId);
+    this.instanceId = options.instanceId;
+    (0, _menu.getEnrollProjectInstanceItemList)({ instanceId: this.instanceId }).then(function (res) {
+      _this.itemList = res.data;
+    }).catch(function (err) {
+
+    });
+  },
+  methods: {
+
+    submit: function submit(itemId) {
+      console.log(itemId);
+    } } };exports.default = _default;
 
 /***/ })
 

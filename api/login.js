@@ -9,7 +9,7 @@ export function login(data) {
 }
 export function MenuList(data) {
 	return request.request({
-		url: '/auth/getMenuList',
+		url: '/auth/getUniappMenuList',
 		method: 'POST',
 		data: data
 	})

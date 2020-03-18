@@ -5,11 +5,13 @@
 		</view>
 		    
 			<uni-section title="校内报名" type="line"/>
-			<view class="adBaseView" @click="entry">
+			<view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId,items.instanceDes)">
+				 
 				<view class="cloumnlist" >
-					监考报名
+					{{items.instanceName}}
 				</view>
 				<view class="bottomLine2"/>
+				
 			</view>
 		 
 
@@ -36,7 +38,7 @@
 				showdetail: false,
 				loginName: '',
 				list: [],
-				password: ''
+				ProjectInstanceList: []
 			}
 		},
 		onLoad() {
@@ -46,26 +48,23 @@
 				if(this.list.length===1)
 				{
 					this.showdetail = true
-					console.log(this.showdetail)
+		
 				}
 			}).catch(err => {
 				
 			})
 			getEnrollProjectInstanceList({}).then(res => {
-							 this.list = res.data
-							if(this.list.length===1)
-							{
-								this.showdetail = true
-								console.log(this.showdetail)
-							}
+							 this.ProjectInstanceList = res.data
+							
 						}).catch(err => {
 							
 						})
 		},
 		methods:{
-			entry(){
+			entry(instanceId,instanceDes){
+				
 				uni.navigateTo({
-					url:'../baoming/baoming'
+					url:'../baoming/baoming?instanceId='+instanceId+'&&instanceDes='+instanceDes+''
 				})
 			}
 		}
