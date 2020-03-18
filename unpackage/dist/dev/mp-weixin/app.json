@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/baoming/fillinfo",
+    "pages/baoming/baoming",
+    "pages/history/histroy",
+    "pages/base/baseInfo",
+    "pages/menu/menu"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "山东大学信息服务",
+    "navigationBarBackgroundColor": "#7acfa6",
+    "backgroundColor": "#7acfa6"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#7acfa6",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/menu/menu",
+        "iconPath": "static/image/tabBar/index.png",
+        "selectedIconPath": "static/image/tabBar/index@active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/history/histroy",
+        "iconPath": "static/image/tabBar/news.png",
+        "selectedIconPath": "static/image/tabBar/news@active.png",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/base/baseInfo",
+        "iconPath": "static/image/tabBar/about.png",
+        "selectedIconPath": "static/image/tabBar/about_cur.png",
+        "text": "个人"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

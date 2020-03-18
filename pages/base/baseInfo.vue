@@ -1,0 +1,61 @@
+<template>
+	<view>
+		<view class="adBaseView">
+		  <view class="adRowView">
+				<view class="headView">姓名</view>
+				<view class="input-text"></view>
+			</view>
+				<view class="bottomLine"></view>
+		</view>
+			<view class="adBaseView">
+			  <view class="adRowView">
+					<view class="headView">学号</view>
+					<view class="input-text"></view>
+				</view>
+					<view class="bottomLine"></view>
+			</view>
+				
+				
+		<view class="adBaseView">
+			<view class="adRowView">
+				<view class="headView"><view class="mustView" >*</view>手机号</view>
+				<view style="width: 70%;"><input  class="input"  placeholder="请输入手机号" /></view>
+			</view>
+			<view class="bottomLine"/>
+		</view>
+		 
+		 
+		 <view class="adBaseView">
+		 	<view class="adRowView">
+		 		<view class="headView">qq号</view>
+		 		<view style="width: 70%;"><input  class="input"  placeholder="请输入qq号" /></view>
+		 	</view>
+		 	<view class="bottomLine"/>
+		 </view>
+		
+		
+		
+		<view class="adBaseView">
+			<view class="cloumnlist">
+				监考报名
+			</view>
+			<view class="bottomLine"/>
+		</view>
+		<view class="adBaseView">
+			<view class="cloumnlist">
+				博士报名
+			</view>
+			<view class="bottomLine"/>
+		</view>
+		
+		
+			
+			   <button class="button-cell">提交</button>
+	</view>
+</template>
+
+<script>
+</script>
+
+<style>
+</style>

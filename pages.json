@@ -1,0 +1,79 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+			{
+				"path": "pages/login/login",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/index/index",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/baoming/fillinfo",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/baoming/baoming",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/history/histroy",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/base/baseInfo",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/menu/menu",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			}
+		
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "山东大学信息服务",
+		"navigationBarBackgroundColor": "#7acfa6",
+		"backgroundColor": "#7acfa6"
+	},
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#7acfa6",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [
+			{
+			    "pagePath": "pages/menu/menu",
+			    "iconPath": "static/image/tabBar/index.png",
+			    "selectedIconPath": "static/image/tabBar/index@active.png",
+			    "text": "首页"
+			},
+			{
+	        "pagePath": "pages/history/histroy",
+	        "iconPath": "static/image/tabBar/news.png",
+	        "selectedIconPath": "static/image/tabBar/news@active.png",
+	        "text": "记录"
+	    },
+		{
+		    "pagePath": "pages/base/baseInfo",
+		    "iconPath": "static/image/tabBar/about.png",
+		    "selectedIconPath": "static/image/tabBar/about_cur.png",
+		    "text": "个人"
+		}]
+	}
+}
