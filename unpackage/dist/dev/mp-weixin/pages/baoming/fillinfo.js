@@ -186,7 +186,58 @@ var _menu = __webpack_require__(/*! @/api/menu.js */ 70);var uniNoticeBar = func
   },
   methods: {
 
-    submit: function submit(itemId, enrollMode) {
+    submit1: function submit1(itemId, enrollMode) {
+      console.log(itemId);
+      console.log(enrollMode);
+      var that = this;
+      uni.showModal({
+        title: '是否报名',
+
+        success: function success(res) {
+          if (res.confirm) {
+
+            (0, _menu.enrollProjectInstanceItemSubmit)({ itemId: itemId, enrollMode: enrollMode }).then(function (res) {
+              if (res.re === 1) {
+                uni.showToast({
+                  title: '报名成功',
+                  duration: 2000 });
+
+
+                uni.switchTab({
+                  url: '../history/histroy' });
+
+              } else
+              {
+                uni.showModal({
+                  title: '提示',
+                  showCancel: false,
+                  confirmColor: "#000000",
+                  content: '报名已满',
+                  success: function success(res) {
+                    if (res.confirm) {
+                      console.log(that.instanceId);
+                      uni.redirectTo({
+                        url: '../baoming/fillinfo?instanceId=' + that.instanceId + '' });
+
+                    }
+                  } });
+
+
+              }
+
+            }).catch(function (err) {
+
+            });
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        } });
+
+
+    },
+
+
+    submit2: function submit2(itemId, enrollMode) {
       console.log(itemId);
       console.log(enrollMode);
       var that = this;

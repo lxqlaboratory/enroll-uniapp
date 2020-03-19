@@ -2,7 +2,7 @@
 	<view>
 	<view>
 	<uni-section title="请选择报名地点" type="line"></uni-section>
-	<view class="adBaseView" v-for="items in applyList" :key="items.itemId" @click="submit(items.itemId,items.enrollMode)" >
+	<view class="adBaseView" v-for="items in applyList" :key="items.itemId" @click="submit1(items.itemId,items.enrollMode)" >
 		<view class="cloumnlist" >
 			{{items.itemName}}-{{items.needCount}}人
 		</view>
@@ -13,7 +13,7 @@
 	
 	<view>
 	<uni-section title="候选报名地点" type="line"></uni-section>
-	<view class="adBaseView" v-for="items in candidateList" :key="items.itemId" @click="submit(items.itemId,items.enrollMode)" >
+	<view class="adBaseView" v-for="items in candidateList" :key="items.itemId" @click="submit2(items.itemId,items.enrollMode)" >
 		<view class="cloumnlist" >
 			{{items.itemName}}-{{items.needCount}}人
 		</view>
@@ -50,7 +50,7 @@
 			},
 		methods:{
 			
-         submit(itemId,enrollMode){
+         submit1(itemId,enrollMode){
 			 console.log(itemId)
 			 console.log(enrollMode)
 			 var that = this;
@@ -98,7 +98,59 @@
 			     }
 			 });
 			 
-		 }
+		 },
+		 
+		 
+		 submit2(itemId,enrollMode){
+		 	 console.log(itemId)
+		 	 console.log(enrollMode)
+		 	 var that = this;
+		 	 uni.showModal({
+		 	     title: '是否报名',
+		 	  
+		 	     success: function (res) {
+		 	         if (res.confirm) {
+		 				
+		 	             enrollProjectInstanceItemSubmit({itemId:itemId,enrollMode:enrollMode}).then(res => {
+		 	             		     if(res.re===1){
+		 								 uni.showToast({
+		 								      title: '报名成功',
+		 								      duration: 2000
+		 								 	
+		 								  });
+		 								 uni.switchTab({
+		 								 	url:'../history/histroy'
+		 								 })
+		 							 }
+		 							 else{
+		 						uni.showModal({
+		 						    title: '提示',
+		 							showCancel: false,
+		 							confirmColor: "#000000",
+		 						    content: '报名已满',
+		 						    success: function (res) {
+		 						        if (res.confirm) {
+		 									console.log(that.instanceId)
+		 								uni.redirectTo({
+		 									url:'../baoming/fillinfo?instanceId='+that.instanceId+''
+		 								})
+		 						        } 
+		 						    }
+		 						});
+		 							
+		 							 }
+		 							
+		 	             			}).catch(err => {
+		 	             				
+		 	             			})
+		 	         } else if (res.cancel) {
+		 	             console.log('用户点击取消');
+		 	         }
+		 	     }
+		 	 });
+		 	 
+		  }
+		 
 		}
 	}
 </script>
