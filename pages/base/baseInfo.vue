@@ -98,7 +98,7 @@
 							 this.secondPerTypeList = res.data.secondPerTypeList
 							this.perName = res.data.perName
 							this.perNum = res.data.perNum
-							this.index = res.data.index
+							this.index = res.data.secondPerTypeIndex
 							this.personId = res.data.personId
 							this.mobilePhone = res.data.mobilePhone
 							this.bankNo = res.data.bankNo
@@ -119,7 +119,19 @@
 				personBaseInfoMaintain({personId:this.personId,secondPerType:this.secondPerType,
 				mobilePhone:this.mobilePhone,bankNo:this.bankNo,bankName:this.bankName
 				}).then(res => {
-					
+					if(res.re === 1){
+						uni.showModal({
+						    title: '提示',
+							showCancel: false,
+							confirmColor: "#000000",
+						    content: '提交成功',
+						    success: function (res) {
+						        if (res.confirm) {
+							
+						        } 
+						    }
+						});
+					}
 					
 					}).catch(err => {
 						
