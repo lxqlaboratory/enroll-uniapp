@@ -61,6 +61,7 @@
 						})
 		},
 		methods:{
+		
 			entry(instanceId,instanceDes){
 				
 				uni.navigateTo({

@@ -51,7 +51,7 @@
 				 console.log(getApp().globalData.vueSessionId)
 				 if(res.reCode === '0'){
 					 uni.switchTab({
-					 	url:'../menu/menu'
+					 	url:'../fist/fist'
 					 })
 			
 				 }else{

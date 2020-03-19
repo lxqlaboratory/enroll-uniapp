@@ -202,7 +202,7 @@ var _login = __webpack_require__(/*! @/api/login.js */ 21); //
 var _default = { data: function data() {return { hideEyes: false, loginName: '', password: '' };}, methods: { passwordF_B: function passwordF_B() {this.hideEyes = !this.hideEyes;}, formSubmit: function formSubmit(e) {console.log(this.loginName); // uni.switchTab({
       // 	url:'../menu/menu'
       // })
-      (0, _login.login)({ loginName: this.loginName, password: this.password }).then(function (res) {getApp().globalData.vueSessionId = res.sessionId;console.log(getApp().globalData.vueSessionId);if (res.reCode === '0') {uni.switchTab({ url: '../menu/menu' });} else {uni.showModal({ title: '提示', content: '登录信息错误', success: function success(res) {
+      (0, _login.login)({ loginName: this.loginName, password: this.password }).then(function (res) {getApp().globalData.vueSessionId = res.sessionId;console.log(getApp().globalData.vueSessionId);if (res.reCode === '0') {uni.switchTab({ url: '../fist/fist' });} else {uni.showModal({ title: '提示', content: '登录信息错误', success: function success(res) {
               if (res.confirm) {
                 console.log('确定');
               } else if (res.cancel) {

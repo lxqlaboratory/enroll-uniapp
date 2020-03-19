@@ -14,6 +14,30 @@
 				}
 			},
 			{
+				"path": "pages/fist/fist",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/enrollEnrollProjectInstanceApply",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/enrollEnrollProjectInstanceManage",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/enrollEnrollProjectInstanceStatistics",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/baoming/fillinfo",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"
@@ -58,7 +82,7 @@
 	    "backgroundColor": "#ffffff",
 	    "list": [
 			{
-			    "pagePath": "pages/menu/menu",
+			    "pagePath": "pages/fist/fist",
 			    "iconPath": "static/image/tabBar/index.png",
 			    "selectedIconPath": "static/image/tabBar/index@active.png",
 			    "text": "首页"

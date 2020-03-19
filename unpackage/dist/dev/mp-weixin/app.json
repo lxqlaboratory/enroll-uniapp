@@ -2,6 +2,10 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
+    "pages/fist/fist",
+    "pages/enroll/enrollEnrollProjectInstanceApply",
+    "pages/enroll/enrollEnrollProjectInstanceManage",
+    "pages/enroll/enrollEnrollProjectInstanceStatistics",
     "pages/baoming/fillinfo",
     "pages/baoming/baoming",
     "pages/history/histroy",
@@ -22,7 +26,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/menu/menu",
+        "pagePath": "pages/fist/fist",
         "iconPath": "static/image/tabBar/index.png",
         "selectedIconPath": "static/image/tabBar/index@active.png",
         "text": "首页"

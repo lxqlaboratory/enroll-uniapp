@@ -16,7 +16,7 @@ export function MenuList(data) {
 }
 export function getEnrollProjectInstanceList(data) {
 	return request.request({
-		url: '/enroll/getEnrollProjectInstanceList',
+		url: '/enroll/enrollProjectInstanceApply',
 		method: 'POST',
 		data: data
 	})
