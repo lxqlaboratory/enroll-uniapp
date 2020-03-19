@@ -1551,7 +1551,7 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 114:
+/***/ 115:
 /*!****************************************************************!*\
   !*** D:/hbni/test/enroll-uniapp/components/uni-icons/icons.js ***!
   \****************************************************************/
@@ -9878,7 +9878,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务" }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务" }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务" }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务" }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务" }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
 
 /***/ }),
 
@@ -9919,6 +9919,35 @@ function enrollProjectInstanceItemSubmit(data) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "" };exports.default = _default;
+
+/***/ }),
+
+/***/ 89:
+/*!**************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/api/baseInfo.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.personBaseInfoMaintainInit = personBaseInfoMaintainInit;exports.personBaseInfoMaintain = personBaseInfoMaintain;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function personBaseInfoMaintainInit(data) {
+  return _request.default.request({
+    url: '/person/personBaseInfoMaintainInit',
+    method: 'POST',
+    data: data });
+
+}
+
+
+function personBaseInfoMaintain(data) {
+  return _request.default.request({
+    url: '/person/personBaseInfoMaintain',
+    method: 'POST',
+    data: data });
+
+}
 
 /***/ })
 
