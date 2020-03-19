@@ -134,7 +134,20 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,28 +163,79 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var _menu = __webpack_require__(/*! @/api/menu.js */ 70);var uniNoticeBar = function uniNoticeBar() {return __webpack_require__.e(/*! import() | components/uni-notice-bar/uni-notice-bar */ "components/uni-notice-bar/uni-notice-bar").then(__webpack_require__.bind(null, /*! @/components/uni-notice-bar/uni-notice-bar.vue */ 102));};var uniSection = function uniSection() {return __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 95));};var _default =
+
 {
   components: { uniNoticeBar: uniNoticeBar, uniSection: uniSection },
   data: function data() {
     return {
       instanceId: '',
-      itemList: [] };
+      retType: '',
+      candidateList: [],
+      applyList: [] };
 
   },
   onLoad: function onLoad(options) {var _this = this;
-    console.log(options.instanceId);
+
     this.instanceId = options.instanceId;
-    (0, _menu.getEnrollProjectInstanceItemList)({ instanceId: this.instanceId }).then(function (res) {
-      _this.itemList = res.data;
+    (0, _menu.enrollProjectInstanceApply)({ instanceId: this.instanceId }).then(function (res) {
+      _this.candidateList = res.data.candidateList;
+      _this.applyList = res.data.applyList;
     }).catch(function (err) {
 
     });
   },
   methods: {
 
-    submit: function submit(itemId) {
+    submit: function submit(itemId, enrollMode) {
       console.log(itemId);
+      console.log(enrollMode);
+      var that = this;
+      uni.showModal({
+        title: '是否报名',
+
+        success: function success(res) {
+          if (res.confirm) {
+
+            (0, _menu.enrollProjectInstanceItemSubmit)({ itemId: itemId, enrollMode: enrollMode }).then(function (res) {
+              if (res.re === 1) {
+                uni.showToast({
+                  title: '报名成功',
+                  duration: 2000 });
+
+
+                uni.switchTab({
+                  url: '../history/histroy' });
+
+              } else
+              {
+                uni.showModal({
+                  title: '提示',
+                  showCancel: false,
+                  confirmColor: "#000000",
+                  content: '报名已满',
+                  success: function success(res) {
+                    if (res.confirm) {
+                      console.log(that.instanceId);
+                      uni.redirectTo({
+                        url: '../baoming/fillinfo?instanceId=' + that.instanceId + '' });
+
+                    }
+                  } });
+
+
+              }
+
+            }).catch(function (err) {
+
+            });
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        } });
+
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

@@ -93,7 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  "uni-section": () =>
+    __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 95))
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -131,10 +134,63 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _login = __webpack_require__(/*! @/api/login.js */ 21);var uniNoticeBar = function uniNoticeBar() {return __webpack_require__.e(/*! import() | components/uni-notice-bar/uni-notice-bar */ "components/uni-notice-bar/uni-notice-bar").then(__webpack_require__.bind(null, /*! @/components/uni-notice-bar/uni-notice-bar.vue */ 102));};var uniSection = function uniSection() {return __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 95));};var _default =
+{
+  components: { uniNoticeBar: uniNoticeBar, uniSection: uniSection },
+  data: function data() {
+    return {
+      showyemian: false,
+      showdetail: false,
+      loginName: '',
+      list: [],
+      instanceId: '',
+      instanceName: '',
+      retType: '',
+      ProjectInstanceList: [] };
+
+  },
+  onLoad: function onLoad() {var _this = this;
+
+    (0, _login.getEnrollProjectInstanceList)({}).then(function (res) {
+      _this.ProjectInstanceList = res.data.projectList;
+      _this.retType = res.data.retType;
+
+      if (_this.retType === 1) {
+        _this.showyemian = true;
+      }
+    }).catch(function (err) {
+
+    });
+  },
+  methods: {
+    entry: function entry(instanceId) {
+      uni.navigateTo({
+        url: '../baoming/baoming?instanceId=' + instanceId + '' });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

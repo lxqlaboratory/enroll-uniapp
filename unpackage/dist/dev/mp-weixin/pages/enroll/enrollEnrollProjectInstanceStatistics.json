@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "山东大学信息服务",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-section": "/components/uni-section/uni-section",
+    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar"
+  }
 }

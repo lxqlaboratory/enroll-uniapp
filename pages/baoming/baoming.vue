@@ -1,6 +1,6 @@
 <template>
 	<view >
-		<uni-section title="系统公告" type="line"></uni-section>
+		<uni-section :title="instanceName" type="line"></uni-section>
 			<view class="example-body">
 				<uni-notice-bar :text="instanceDes" />
 			</view>
@@ -19,22 +19,36 @@
 <script>
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import uniSection from '@/components/uni-section/uni-section.vue'
-import  { getEnrollProjectInstanceItemList } from '@/api/menu.js'
+import  { enrollProjectInstanceApply } from '@/api/menu.js'
 	export default {
 		 components: {uniNoticeBar,uniSection},
 		data() {
 			return {
 				instanceId: '',
+				retType: '',
+				instanceName: '',
 				instanceDes: '',
-				password: ''
+				itemList: []
 			}
 		},
 		onLoad(options) {
-			console.log(options.instanceId)
-			console.log(options.instanceDes)
-			this.instanceDes = options.instanceDes
-			this.instanceId = options.instanceId
 			
+			this.instanceId = options.instanceId
+			enrollProjectInstanceApply({instanceId:this.instanceId}).then(res => {
+							 this.instanceDes = res.data.instanceDes
+							 this.instanceName = res.data.instanceName
+						
+							 this.retType = res.data.retType
+							 if(this.retType === 4)
+							 {
+								 
+								 uni.switchTab({
+								 	url:'../history/histroy'
+								 })
+								 }
+						}).catch(err => {
+							
+						})
 			},
 		methods:{
 			

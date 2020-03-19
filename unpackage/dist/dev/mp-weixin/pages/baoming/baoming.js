@@ -163,16 +163,30 @@ var _menu = __webpack_require__(/*! @/api/menu.js */ 70);var uniNoticeBar = func
   data: function data() {
     return {
       instanceId: '',
+      retType: '',
+      instanceName: '',
       instanceDes: '',
-      password: '' };
+      itemList: [] };
 
   },
-  onLoad: function onLoad(options) {
-    console.log(options.instanceId);
-    console.log(options.instanceDes);
-    this.instanceDes = options.instanceDes;
-    this.instanceId = options.instanceId;
+  onLoad: function onLoad(options) {var _this = this;
 
+    this.instanceId = options.instanceId;
+    (0, _menu.enrollProjectInstanceApply)({ instanceId: this.instanceId }).then(function (res) {
+      _this.instanceDes = res.data.instanceDes;
+      _this.instanceName = res.data.instanceName;
+
+      _this.retType = res.data.retType;
+      if (_this.retType === 4)
+      {
+
+        uni.switchTab({
+          url: '../history/histroy' });
+
+      }
+    }).catch(function (err) {
+
+    });
   },
   methods: {
 

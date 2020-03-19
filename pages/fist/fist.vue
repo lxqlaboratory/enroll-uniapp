@@ -1,4 +1,5 @@
 <template>
+	<view>
 	<view v-if="!showdetail">
 	<view class="main-core" >
 	   
@@ -11,14 +12,19 @@
 		
 			</view>	
 			</view>
-	<view v-else>
+	<view v-if="showdetail"  >
 		<uni-section title="校内报名" type="line"/>
-		<view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId,items.instanceDes)">
+		<view v-if="!showyemian" >
+		  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId)">
 			 
 			<view class="cloumnlist" >
 				{{items.instanceName}}
 			</view>
 			<view class="bottomLine2"/>
+			
+		  </view>
+		    </view>
+			<view v-else>当前无报名信息</view>
 			
 		</view>
 		</view>
@@ -33,9 +39,13 @@
 		 components: {uniNoticeBar,uniSection},
 		data() {
 			return {
+				showyemian: false,
 				showdetail: false,
 				loginName: '',
 				list: [],
+				instanceId: '',
+				instanceName: '',
+				retType: '',
 				ProjectInstanceList: []
 			}
 		},
@@ -54,8 +64,12 @@
 				
 			})
 			getEnrollProjectInstanceList({}).then(res => {
-							 this.ProjectInstanceList = res.data
+							 this.ProjectInstanceList = res.data.projectList
+							this.retType = res.data.retType
 							
+							if(this.retType === 1){
+								this.showyemian = true;
+							}
 						}).catch(err => {
 							
 						})
@@ -67,9 +81,9 @@
 					url:'../enroll/'+url
 				})
 			},
-			entry(instanceId,instanceDes){
+			entry(instanceId){
 				uni.navigateTo({
-					url:'../baoming/baoming?instanceId='+instanceId+'&&instanceDes='+instanceDes+''
+					url:'../baoming/baoming?instanceId='+instanceId+''
 				})
 			}
 		}
