@@ -23,3 +23,27 @@ export function getEnrollItemPersonList(data) {
 		data: data
 	})
 }
+
+export function enrollItemPersonApplyCancel(data) {
+	return request.request({
+		url: '/enroll/enrollItemPersonApplyCancel',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSelectPersonList(data) {
+	return request.request({
+		url: '/person/getSelectPersonList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function enrollItemPersonApplyAdd(data) {
+	return request.request({
+		url: '/enroll/enrollItemPersonApplyAdd',
+		method: 'POST',
+		data: data
+	})
+}

@@ -1701,7 +1701,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 151:
+/***/ 158:
 /*!****************************************************************************!*\
   !*** D:/hbni/test/enroll-uniapp/components/uni-swipe-action-item/mpwxs.js ***!
   \****************************************************************************/
@@ -1806,7 +1806,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 161:
+/***/ 168:
 /*!****************************************************************!*\
   !*** D:/hbni/test/enroll-uniapp/components/uni-icons/icons.js ***!
   \****************************************************************/
@@ -9114,7 +9114,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInstanceListOfManage = getEnrollProjectInstanceListOfManage;exports.getEnrollProjectInstanceAndItemList = getEnrollProjectInstanceAndItemList;exports.getEnrollItemPersonList = getEnrollItemPersonList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInstanceListOfManage = getEnrollProjectInstanceListOfManage;exports.getEnrollProjectInstanceAndItemList = getEnrollProjectInstanceAndItemList;exports.getEnrollItemPersonList = getEnrollItemPersonList;exports.enrollItemPersonApplyCancel = enrollItemPersonApplyCancel;exports.getSelectPersonList = getSelectPersonList;exports.enrollItemPersonApplyAdd = enrollItemPersonApplyAdd;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function getEnrollProjectInstanceListOfManage(data) {
   return _request.default.request({
@@ -9135,6 +9135,30 @@ function getEnrollProjectInstanceAndItemList(data) {
 function getEnrollItemPersonList(data) {
   return _request.default.request({
     url: '/enroll/getEnrollItemPersonList',
+    method: 'POST',
+    data: data });
+
+}
+
+function enrollItemPersonApplyCancel(data) {
+  return _request.default.request({
+    url: '/enroll/enrollItemPersonApplyCancel',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSelectPersonList(data) {
+  return _request.default.request({
+    url: '/person/getSelectPersonList',
+    method: 'POST',
+    data: data });
+
+}
+
+function enrollItemPersonApplyAdd(data) {
+  return _request.default.request({
+    url: '/enroll/enrollItemPersonApplyAdd',
     method: 'POST',
     data: data });
 

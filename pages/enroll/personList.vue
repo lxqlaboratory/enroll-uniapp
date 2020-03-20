@@ -1,15 +1,32 @@
 <template>
 	<view>
-		<uni-section title="人员管理" type="line"></uni-section>
+		<uni-section title="人员添加" type="line"></uni-section>
+		<view class="example-body">
+			<uni-search-bar  placeholder="请输入姓名或工号" @confirm="search"/>
+			
+		</view>
+		
+		<view v-if="showShanchu">
+			<uni-section title="请点击要添加的人员" type="line"></uni-section>
+			<uni-list v-for="items in addList" :key="items.perNum" >
+				 <uni-list-item :show-arrow="true" @click="add(items.perNum)">{{items.perName}}-{{items.perNum}}-{{items.collegeName}}</uni-list-item>
+					</uni-list>
+		</view>
+	
+		
+		<view v-else>
+			<uni-section title="人员删除" type="line"></uni-section>
 	    <uni-swipe-action>
-	    	<uni-swipe-action-item v-for="(item,index) in swipeList" :options="item.options" :key="item.id" @change="swipeChange" @click="swipeClick($event,index)">
-	    		<text class="cont">{{item.content}}</text>
+	    	<uni-swipe-action-item v-for="(item,index) in personList" :options="options" :key="item.itemPersonId" @change="swipeChange" @click="swipeClick($event,index,item.itemPersonId)">
+	    		<text class="cont">{{item.perName}}-{{item.perNum}}-{{item.collegeName}}</text>
 	    	</uni-swipe-action-item>
 	    </uni-swipe-action>
+		</view>
 	</view>
 </template>
 
 <script>
+	import uniSearchBar from '@/components/uni-search-bar/uni-search-bar.vue'
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import uniSection from '@/components/uni-section/uni-section.vue'
 	import uniSwipeAction from '@/components/uni-swipe-action/uni-swipe-action.vue'
@@ -17,64 +34,42 @@
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollItemPersonList } from '@/api/manage.js'
+	import  { enrollItemPersonApplyCancel } from '@/api/manage.js'
+	import  { getSelectPersonList } from '@/api/manage.js'
+		import  { enrollItemPersonApplyAdd } from '@/api/manage.js'
 	export default {
 		 components: {uniNoticeBar,
 		 uniSection,
 		 uniList,
+		 uniSearchBar,
 		 uniSwipeAction,
 		 uniSwipeActionItem,
 		 uniListItem
 		 },
 		data() {
 			return {
-				showyemian: false,
+				showShanchu: false,
 				showdetail: false,
-				loginName: '',
+				addList: [],
+				itemId: '',
 				enrollMode: '',
 				personList: [],
-				swipeList: [{
-					options: [{
-						text: '添加',
-						style: {
-							backgroundColor: 'rgb(255,58,49)'
-						}
-					}],
-					id: 0,
-					content: 'item1'
+				options: [{
+					text: '取消'
 				}, {
-					id: 1,
-					options: [{
-						text: '取消'
-					}, {
-						text: '删除',
-						style: {
-							backgroundColor: 'rgb(255,58,49)'
-						}
-					}],
-					content: 'item2'
-				}, {
-					id: 2,
-					options: [{
-						text: '置顶'
-					}, {
-						text: '标记为已读',
-						style: {
-							backgroundColor: 'rgb(254,156,1)'
-						}
-					}, {
-						text: '删除',
-						style: {
-							backgroundColor: 'rgb(255,58,49)'
-						}
-					}],
-					content: 'item3'
+					text: '删除',
+					style: {
+						backgroundColor: 'rgb(255,58,49)'
+					}
 				}]
+				
 			}
 		},
 		onLoad(options) {
 			this.itemId = options.itemId
 			this.enrollMode = options.enrollMode
 			console.log(options.enrollMode)
+			this.showShanchu = false
 			getEnrollItemPersonList({itemId:this.itemId,enrollMode:this.enrollMode}).then(res => {
 							 this.personList = res.data
 							
@@ -83,10 +78,66 @@
 						})
 		},
 		methods:{
+			
+			search(res) {
+				this.showShanchu = true
+				getSelectPersonList({input:res.value}).then(res => {
+								 this.addList = res.data
+								
+							}).catch(err => {
+								
+							})
+				
+			},
+			add(perNum){
+				var that = this;
+				uni.showModal({
+					title: '是否添加',
+					content: perNum,
+					success: (res) => {
+						if (res.confirm) {
+							
+						enrollItemPersonApplyAdd({perNum:perNum,itemId:this.itemId,enrollMode:this.enrollMode}).then(res => {
+														
+						       if(res.data==='查不到此人，无法报名！')
+										{
+											uni.showToast({
+												title: '查不到此人，无法报名！',
+												icon: 'none'
+											})
+											
+										}else if(res.data==='已经报名无须再报名！'){
+											uni.showToast({
+												title: '已经报名无须再报名！',
+												icon: 'none'
+											})
+										}
+										
+										else if(res.re === 1){
+											uni.showToast({
+												title: '添加成功！',
+												icon: 'none'
+											})
+											uni.redirectTo({
+												url:'../enroll/personList?itemId='+that.itemId+'&&enrollMode='+that.enrollMode+''
+											})
+										}
+									}).catch(err => {
+										
+									})
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+				
+			
+			},
+			
 			swipeChange(e) {
 					console.log('返回：', e);
 				},
-				swipeClick(e, index) {
+				swipeClick(e, index,id) {
 					let {
 						content
 					} = e
@@ -96,7 +147,19 @@
 							content: '是否删除',
 							success: (res) => {
 								if (res.confirm) {
-									this.swipeList.splice(index, 1)
+									
+									enrollItemPersonApplyCancel({itemPersonId:id}).then(res => {
+													 if(res.re === 1){
+														 this.personList.splice(index,1);
+														 uni.showToast({
+														 	title: `删除成功`,
+														 	icon: 'none'
+														 })
+													 }
+												
+												}).catch(err => {
+													
+												})
 								} else if (res.cancel) {
 									console.log('用户点击取消');
 								}
@@ -116,6 +179,20 @@
 </script>
 
 <style>
+
+	.cont {
+		flex: 1;
+		height: 45px;
+		line-height: 45px;
+		padding: 0 15px;
+		position: relative;
+		background-color: #fff;
+		font-size: 15px;
+		border-bottom-color: #F5F5F5;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+	}
+	
 	/* 头条小程序组件内不能引入字体 */
 	/* #ifdef MP-TOUTIAO */
 	@font-face {
@@ -213,38 +290,22 @@
 	}
 	
 	
-	.cont {
-		flex: 1;
-		height: 45px;
-		line-height: 45px;
-		padding: 0 15px;
-		position: relative;
-		background-color: #fff;
-		font-size: 15px;
-		border-bottom-color: #F5F5F5;
-		border-bottom-width: 1px;
-		border-bottom-style: solid;
+	
+	.search-result {
+		margin-top: 10px;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	
+	.search-result-text {
+		text-align: center;
+		font-size: 14px;
 	}
 	
 	.example-body {
 		/* #ifndef APP-NVUE */
-		display: flex;
+		display: block;
 		/* #endif */
-		flex-direction: row;
-		justify-content: center;
-		padding: 10px 0;
-		background-color: #fff;
-	}
-	
-	.button {
-		border-color: #e5e5e5;
-		border-style: solid;
-		border-width: 1px;
-		padding: 4px 8px;
-		border-radius: 4px;
-	}
-	
-	.button-text {
-		font-size: 15px;
+		padding: 0px;
 	}
 </style>
