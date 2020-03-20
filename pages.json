@@ -14,6 +14,18 @@
 				}
 			},
 			{
+				"path": "pages/enroll/manageList",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/personList",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/fist/fist",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"

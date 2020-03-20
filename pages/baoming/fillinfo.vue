@@ -2,7 +2,7 @@
 	<view>
 	<view>
 	<uni-section title="请选择报名地点" type="line"></uni-section>
-	<view class="adBaseView" v-for="items in applyList" :key="items.itemId" @click="submit1(items.itemId,items.enrollMode)" >
+	<view class="adBaseView" v-for="items in applyList" :key="items.itemId" @click="submit1(items.itemId,items.enrollMode,items.itemName)" >
 		<view class="cloumnlist" >
 			{{items.itemName}}-{{items.needCount}}人
 		</view>
@@ -13,7 +13,7 @@
 	
 	<view>
 	<uni-section title="候选报名地点" type="line"></uni-section>
-	<view class="adBaseView" v-for="items in candidateList" :key="items.itemId" @click="submit2(items.itemId,items.enrollMode)" >
+	<view class="adBaseView" v-for="items in candidateList" :key="items.itemId" @click="submit2(items.itemId,items.enrollMode,items.itemName)" >
 		<view class="cloumnlist" >
 			{{items.itemName}}-{{items.needCount}}人
 		</view>
@@ -50,13 +50,13 @@
 			},
 		methods:{
 			
-         submit1(itemId,enrollMode){
+         submit1(itemId,enrollMode,itemName){
 			 console.log(itemId)
 			 console.log(enrollMode)
 			 var that = this;
 			 uni.showModal({
 			     title: '是否报名',
-			  
+			     content: itemName,
 			     success: function (res) {
 			         if (res.confirm) {
 						
@@ -101,13 +101,13 @@
 		 },
 		 
 		 
-		 submit2(itemId,enrollMode){
+		 submit2(itemId,enrollMode,itemName){
 		 	 console.log(itemId)
 		 	 console.log(enrollMode)
 		 	 var that = this;
 		 	 uni.showModal({
 		 	     title: '是否报名',
-		 	  
+		 	     content: itemName,
 		 	     success: function (res) {
 		 	         if (res.confirm) {
 		 				

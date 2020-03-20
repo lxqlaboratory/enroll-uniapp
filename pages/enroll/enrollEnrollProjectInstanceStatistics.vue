@@ -1,28 +1,27 @@
 <template>
 	<view>
-<uni-section title="校内报名" type="line"/>
-		<view v-if="!showyemian" >
-		  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId)">
-			 
-			<view class="cloumnlist" >
-				{{items.instanceName}}
-			</view>
-			<view class="bottomLine2"/>
-			
-		  </view>
-		    </view>
-			<view v-else>当前无报名信息</view>
-			
-		</view>
+		<uni-section title="菜单列表" type="line"></uni-section>
+	<uni-list>
+			<uni-list-item :show-arrow="false" title="列表文字mmmmmmmmmmmmmmmmmmm" />
+			<uni-list-item :show-arrow="true" title="列表文字" :note="'已报名'+baoming" />
+			<uni-list-item :disabled="true" :show-arrow="false" title="列表禁用状态" />
+		</uni-list>
+		<uni-section title="菜单列表" type="line"></uni-section>
 	</view>
 </template>
 
 <script>
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import uniSection from '@/components/uni-section/uni-section.vue'
+	
+	import uniList from '@/components/uni-list/uni-list.vue'
+	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceList } from '@/api/login.js'
 	export default {
-		 components: {uniNoticeBar,uniSection},
+		 components: {uniNoticeBar,uniSection,
+		 uniSection,
+		 uniList,
+		 uniListItem},
 		data() {
 			return {
 				showyemian: false,

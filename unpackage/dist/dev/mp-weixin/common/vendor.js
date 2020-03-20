@@ -1551,7 +1551,262 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 115:
+/***/ 106:
+/*!**************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/api/baseInfo.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.personBaseInfoMaintainInit = personBaseInfoMaintainInit;exports.personBaseInfoMaintain = personBaseInfoMaintain;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function personBaseInfoMaintainInit(data) {
+  return _request.default.request({
+    url: '/person/personBaseInfoMaintainInit',
+    method: 'POST',
+    data: data });
+
+}
+
+
+function personBaseInfoMaintain(data) {
+  return _request.default.request({
+    url: '/person/personBaseInfoMaintain',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 14:
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode, /* vue-cli only */
+  components, // fixed by xxxxxx auto components
+  renderjs // fixed by xxxxxx renderjs
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // fixed by xxxxxx auto components
+  if (components) {
+    options.components = Object.assign(components, options.components || {})
+  }
+  // fixed by xxxxxx renderjs
+  if (renderjs) {
+    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
+      this[renderjs.__module] = this
+    });
+    (options.mixins || (options.mixins = [])).push(renderjs)
+  }
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 151:
+/*!****************************************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/components/uni-swipe-action-item/mpwxs.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  data: function data() {
+    return {
+      position: [],
+      button: [] };
+
+  },
+  computed: {
+    pos: function pos() {
+      return JSON.stringify(this.position);
+    },
+    btn: function btn() {
+      return JSON.stringify(this.button);
+    } },
+
+  watch: {
+    show: function show(newVal) {
+      if (this.autoClose) return;
+      var valueObj = this.position[0];
+      if (!valueObj) {
+        this.init();
+        return;
+      }
+      valueObj.show = newVal;
+      this.$set(this.position, 0, valueObj);
+    } },
+
+  created: function created() {
+    if (this.swipeaction.children !== undefined) {
+      this.swipeaction.children.push(this);
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+
+  },
+  beforeDestroy: function beforeDestroy() {var _this = this;
+    this.swipeaction.children.forEach(function (item, index) {
+      if (item === _this) {
+        _this.swipeaction.children.splice(index, 1);
+      }
+    });
+  },
+  methods: {
+    init: function init() {var _this2 = this;
+
+      setTimeout(function () {
+        _this2.getSize();
+        _this2.getButtonSize();
+      }, 50);
+    },
+    closeSwipe: function closeSwipe(e) {
+      if (!this.autoClose) return;
+      this.swipeaction.closeOther(this);
+    },
+
+    change: function change(e) {
+      this.$emit('change', e.open);
+      var valueObj = this.position[0];
+      if (valueObj.show !== e.open) {
+        valueObj.show = e.open;
+        this.$set(this.position, 0, valueObj);
+      }
+    },
+    onClick: function onClick(index, item) {
+      this.$emit('click', {
+        content: item,
+        index: index });
+
+    },
+    getSize: function getSize() {var _this3 = this;
+      var views = uni.createSelectorQuery().in(this);
+      views.
+      selectAll('.selector-query-hock').
+      boundingClientRect(function (data) {
+        if (_this3.autoClose) {
+          data[0].show = false;
+        } else {
+          data[0].show = _this3.show;
+        }
+        _this3.position = data;
+      }).
+      exec();
+    },
+    getButtonSize: function getButtonSize() {var _this4 = this;
+      var views = uni.createSelectorQuery().in(this);
+      views.
+      selectAll('.button-hock').
+      boundingClientRect(function (data) {
+        _this4.button = data;
+      }).
+      exec();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 161:
 /*!****************************************************************!*\
   !*** D:/hbni/test/enroll-uniapp/components/uni-icons/icons.js ***!
   \****************************************************************/
@@ -1690,127 +1945,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 14:
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode, /* vue-cli only */
-  components, // fixed by xxxxxx auto components
-  renderjs // fixed by xxxxxx renderjs
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // fixed by xxxxxx auto components
-  if (components) {
-    options.components = Object.assign(components, options.components || {})
-  }
-  // fixed by xxxxxx renderjs
-  if (renderjs) {
-    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
-      this[renderjs.__module] = this
-    });
-    (options.mixins || (options.mixins = [])).push(renderjs)
-  }
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
 
 /***/ }),
 
@@ -7892,7 +8026,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/request/index.js *
 
 // 切换baseUrl 
 var config = {
-  //baseUrl: 'https://gradms.sdu.edu.cn',
+  //baseUrl: 'http://222.194.64.97/func',
   baseUrl: 'http://localhost:8080/func',
   header: { "Content-Type": "application/json" },
 
@@ -8972,6 +9106,42 @@ module.exports = g;
 
 /***/ }),
 
+/***/ 44:
+/*!************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/api/manage.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInstanceListOfManage = getEnrollProjectInstanceListOfManage;exports.getEnrollProjectInstanceAndItemList = getEnrollProjectInstanceAndItemList;exports.getEnrollItemPersonList = getEnrollItemPersonList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getEnrollProjectInstanceListOfManage(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInstanceListOfManage',
+    method: 'POST',
+    data: data });
+
+}
+
+function getEnrollProjectInstanceAndItemList(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInstanceAndItemList',
+    method: 'POST',
+    data: data });
+
+}
+
+function getEnrollItemPersonList(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollItemPersonList',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
 /***/ 5:
 /*!*******************************************************!*\
   !*** ./node_modules/@dcloudio/uni-stat/dist/index.js ***!
@@ -9878,11 +10048,23 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务" }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务" }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务" }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务" }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务" }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/manageList": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/personList": { "navigationBarTitleText": "山东大学信息服务" }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务" }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务" }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
 
 /***/ }),
 
-/***/ 70:
+/***/ 8:
+/*!*************************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/pages.json?{"type":"stat"} ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "" };exports.default = _default;
+
+/***/ }),
+
+/***/ 87:
 /*!**********************************************!*\
   !*** D:/hbni/test/enroll-uniapp/api/menu.js ***!
   \**********************************************/
@@ -9903,47 +10085,6 @@ function enrollProjectInstanceApply(data) {
 function enrollProjectInstanceItemSubmit(data) {
   return _request.default.request({
     url: '/enroll/enrollProjectInstanceItemSubmit',
-    method: 'POST',
-    data: data });
-
-}
-
-/***/ }),
-
-/***/ 8:
-/*!*************************************************************!*\
-  !*** D:/hbni/test/enroll-uniapp/pages.json?{"type":"stat"} ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "" };exports.default = _default;
-
-/***/ }),
-
-/***/ 89:
-/*!**************************************************!*\
-  !*** D:/hbni/test/enroll-uniapp/api/baseInfo.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.personBaseInfoMaintainInit = personBaseInfoMaintainInit;exports.personBaseInfoMaintain = personBaseInfoMaintain;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function personBaseInfoMaintainInit(data) {
-  return _request.default.request({
-    url: '/person/personBaseInfoMaintainInit',
-    method: 'POST',
-    data: data });
-
-}
-
-
-function personBaseInfoMaintain(data) {
-  return _request.default.request({
-    url: '/person/personBaseInfoMaintain',
     method: 'POST',
     data: data });
 

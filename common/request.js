@@ -3,7 +3,7 @@ import Request from '@/request/index.js'
 
 // 切换baseUrl 
 const config = {
-	//baseUrl: 'https://gradms.sdu.edu.cn',
+	//baseUrl: 'http://222.194.64.97/func',
     baseUrl: 'http://localhost:8080/func',
 	header: {"Content-Type": "application/json",
 	},
