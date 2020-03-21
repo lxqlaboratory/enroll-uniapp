@@ -198,10 +198,10 @@
 				itemList: []
 			}
 		},
-		onLoad(options) {
+		onLoad() {
 			
-			this.instanceId = options.instanceId
-			getEnrollProjectInstanceDetail({instanceId: this.instanceId}).then(res => {
+			
+			getEnrollProjectInstanceDetail({}).then(res => {
 							this.instance = res.data.instance
 							this.itemList = res.data.itemList
 							this.index = res.data.instance.limitTypeIndex
@@ -282,5 +282,4 @@
 </script>
 
 <style>
-	
 </style>
