@@ -103,7 +103,7 @@
 						});
 					} else {
 						uni.navigateTo({
-							url:'./addProject?instanceId='+instanceId+''
+							url:'./addProject?instanceId='+instanceId+'&&projectId='+this.projectId+''
 						})
 						
 					}

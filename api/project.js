@@ -24,3 +24,11 @@ export function getEnrollProjectInstanceDetail(data) {
 		data: data
 	})
 }
+
+export function saveOrUpdateEnrollProjectInstance(data) {
+	return request.request({
+		url: '/enroll/saveOrUpdateEnrollProjectInstance',
+		method: 'POST',
+		data: data
+	})
+}

@@ -161,6 +161,7 @@
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceDetail } from '@/api/project.js'
+	import  { saveOrUpdateEnrollProjectInstance } from '@/api/project.js'
 	export default {
 		 components: {
 		 uniSection,
@@ -187,6 +188,7 @@
 					viewStartDate: '',
 					viewStartTime: ''
 				},
+				projectId: '',
 				date: currentDate,
 				showyemian: false,
 				showdetail: false,
@@ -199,7 +201,7 @@
 			}
 		},
 		onLoad(options) {
-			
+			this.projectId = options.projectId
 			this.instanceId = options.instanceId
 			getEnrollProjectInstanceDetail({instanceId: this.instanceId}).then(res => {
 							this.instance = res.data.instance
@@ -258,9 +260,15 @@
 				   
 				   
 			submit(){
-				uni.navigateTo({
-					url:'./addProject'
-				})
+				saveOrUpdateEnrollProjectInstance({instance: this.instance,projectId: this.projectId}).then(res => {
+								uni.switchTab({
+									url:'../fist/fist'
+								})
+								
+							}).catch(err => {
+								
+							})
+				
 			},
 			getDate(type) {
 			            const date = new Date();
