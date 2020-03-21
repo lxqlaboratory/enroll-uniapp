@@ -2,7 +2,7 @@
 	<view>
 		<uni-section title="管理报名" type="line"></uni-section>
 		<uni-swipe-action>
-			<uni-swipe-action-item v-for="(item,index) in ProjectInstanceList" :options="options2" :key="item.instanceId" @change="swipeChange" @click="swipeClick($event,index,item.instanceId)">
+			<uni-swipe-action-item v-for="(item,index) in ProjectInstanceList" :options="options2" :key="item.instanceId"  @click="swipeClick($event,index,item.instanceId)">
 				<text class="cont">{{item.instanceNum}}-{{item.instanceName}}-{{item.year}}年</text>
 			</uni-swipe-action-item>
 		</uni-swipe-action>
@@ -67,7 +67,7 @@
 		 	
 		 		submit(){
 		 			uni.navigateTo({
-		 				url:'./addProject'
+		 				url:'./onlyTianjia'
 		 			})
 		 		},
 				swipeClick(e, index,instanceId) {

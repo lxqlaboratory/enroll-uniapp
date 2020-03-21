@@ -20,6 +20,12 @@
 				}
 			},
 			{
+				"path": "pages/enroll/onlyTianjia",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/enroll/addInstanceLIst",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"

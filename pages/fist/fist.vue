@@ -14,6 +14,10 @@
 			</view>
 	<view v-if="showdetail"  >
 		<uni-section title="校内报名" type="line"/>
+		 <view v-if="showText">
+			 <uni-notice-bar :text="texta" />
+			 <button class="button-cell" @click="complete">完善个人信息</button>
+		 </view>
 		<view v-if="!showyemian" >
 		  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId)">
 			 
@@ -39,6 +43,8 @@
 		 components: {uniNoticeBar,uniSection},
 		data() {
 			return {
+				texta:'',
+				showText: false,
 				showyemian: false,
 				showdetail: false,
 				loginName: '',
@@ -64,12 +70,18 @@
 				
 			})
 			getEnrollProjectInstanceList({}).then(res => {
-							 this.ProjectInstanceList = res.data.projectList
-							this.retType = res.data.retType
+				if(res.re === -1){
+					this.showText = true
+					this.texta = res.data
+				}else{
+					this.ProjectInstanceList = res.data.projectList
+					this.retType = res.data.retType
+					
+					if(this.retType === 1){
+						this.showyemian = true;
+					}
+				}
 							
-							if(this.retType === 1){
-								this.showyemian = true;
-							}
 						}).catch(err => {
 							
 						})
@@ -84,6 +96,11 @@
 			entry(instanceId){
 				uni.navigateTo({
 					url:'../baoming/baoming?instanceId='+instanceId+''
+				})
+			},
+			complete(){
+				uni.switchTab({
+					url:'../base/baseInfo'
 				})
 			}
 		}
