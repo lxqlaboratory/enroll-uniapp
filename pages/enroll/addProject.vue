@@ -50,6 +50,16 @@
 			            format: true
 			        })
 			return {
+				instance:{
+					enrollEndDate:'',
+					enrollEndTime:'',
+					enrollStartDate: '',
+					enrollStartTime: '',
+					instanceDes:'',
+					instanceId:'',
+					instanceName:'',
+					
+				},
 				date: currentDate,
 				showyemian: false,
 				showdetail: false,
