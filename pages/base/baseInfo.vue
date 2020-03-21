@@ -24,49 +24,39 @@
 					<view class="bottomLine"></view>
 			</view>
 			
-				<view class="adBaseView">
-					<view class="adRowView">
-						<view class="headView"><view class="mustView" >*</view>手机号</view>
-						<view style="width: 70%;"><input  class="input" v-model="mobilePhone" placeholder="请输入手机号" /></view>
-					</view>
-					<view class="bottomLine"/>
-				</view>
-				
-				<view class="adBaseView">
-					<view class="adRowView">
-						<view class="headView"><view class="mustView" >*</view>银行名称</view>
-						<view style="width: 70%;"><input  class="input" v-model="bankName" placeholder="请输入银行名称" /></view>
-					</view>
-					<view class="bottomLine"/>
-				</view>
-				
-				<view class="adBaseView">
-					<view class="adRowView">
-						<view class="headView"><view class="mustView" >*</view>银行卡号</view>
-						<view style="width: 70%;"><input  class="input" v-model="bankNo" placeholder="请输入银行卡号" /></view>
-					</view>
-					<view class="bottomLine"/>
-				</view>
-				
 			<view class="adBaseView">
 				<view class="adRowView">
 					<view class="headView">聘任类型</view>
 					<view style="width: 70%;"><picker class="input" @change="bindchange" :value="index" :range="secondPerTypeList" :range-key="'label'">
-			                        <view class="uni-input">{{secondPerTypeList[index].label}}</view>
-			                    </picker></view>
+									<view class="uni-input">{{secondPerTypeList[index].label}}</view>
+								</picker></view>
 				</view>
 				<view class="bottomLine"/>
 			</view>	
-	
-		 
-		
-		
-		
-		
-		
-		
+			<view class="adBaseView">
+				<view class="adRowView">
+					<view class="headView"><view class="mustView" >*</view>手机号</view>
+					<view style="width: 70%;"><input  class="input" v-model="mobilePhone" placeholder="请输入手机号" /></view>
+				</view>
+				<view class="bottomLine"/>
+			</view>
 			
-			   <button class="button-cell" @click="submit">保存并提交</button>
+			<view class="adBaseView">
+				<view class="adRowView">
+					<view class="headView"><view class="mustView" >*</view>银行名称</view>
+					<view style="width: 70%;"><input  class="input" v-model="bankName" placeholder="请输入银行名称,可以为空" /></view>
+				</view>
+				<view class="bottomLine"/>
+			</view>
+			
+			<view class="adBaseView">
+				<view class="adRowView">
+					<view class="headView"><view class="mustView" >*</view>银行卡号</view>
+					<view style="width: 70%;"><input  class="input" v-model="bankNo" placeholder="请输入银行卡号,可以为空" /></view>
+				</view>
+				<view class="bottomLine"/>
+			</view>				
+			<button class="button-cell" @click="submit">保存并提交</button>
 	</view>
 </template>
 
