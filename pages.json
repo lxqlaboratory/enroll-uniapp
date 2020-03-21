@@ -20,6 +20,24 @@
 				}
 			},
 			{
+				"path": "pages/enroll/addInstanceLIst",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/addProject",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/addItemList",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/enroll/personList",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"

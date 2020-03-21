@@ -134,7 +134,7 @@
 			
 			},
 			
-			swipeChange(e) {
+			   swipeChange(e) {
 					console.log('返回：', e);
 				},
 				swipeClick(e, index,id) {

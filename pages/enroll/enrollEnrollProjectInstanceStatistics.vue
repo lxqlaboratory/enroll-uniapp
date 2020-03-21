@@ -1,12 +1,11 @@
 <template>
 	<view>
-		<uni-section title="菜单列表" type="line"></uni-section>
-	<uni-list>
-			<uni-list-item :show-arrow="false" title="列表文字mmmmmmmmmmmmmmmmmmm" />
-			<uni-list-item :show-arrow="true" title="列表文字" :note="'已报名'+baoming" />
-			<uni-list-item :disabled="true" :show-arrow="false" title="列表禁用状态" />
+		<uni-section title="报名项目" type="line"></uni-section>
+	<uni-list v-for="items in projectList" :key="items.projectId">
+			<uni-list-item :show-arrow="true" :title="items.projectName" @click="entry(items.projectId)"/>
 		</uni-list>
-		<uni-section title="菜单列表" type="line"></uni-section>
+		
+		
 	</view>
 </template>
 
@@ -16,7 +15,7 @@
 	
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
-	import  { getEnrollProjectInstanceList } from '@/api/login.js'
+	import  { getEnrollProjectInfoListOfManage } from '@/api/project.js'
 	export default {
 		 components: {uniNoticeBar,uniSection,
 		 uniSection,
@@ -31,26 +30,23 @@
 				instanceId: '',
 				instanceName: '',
 				retType: '',
-				ProjectInstanceList: []
+				projectList: []
 			}
 		},
 		onLoad() {
 			
-			getEnrollProjectInstanceList({}).then(res => {
-							 this.ProjectInstanceList = res.data.projectList
-							this.retType = res.data.retType
+			getEnrollProjectInfoListOfManage({}).then(res => {
+							this.projectList = res.data
 							
-							if(this.retType === 1){
-								this.showyemian = true;
-							}
+							
 						}).catch(err => {
 							
 						})
 		},
 		methods:{
-			entry(instanceId){
+			entry(projectId){
 				uni.navigateTo({
-					url:'../baoming/baoming?instanceId='+instanceId+''
+					url:'./addInstanceLIst?projectId='+projectId+''
 				})
 			}
 		}
