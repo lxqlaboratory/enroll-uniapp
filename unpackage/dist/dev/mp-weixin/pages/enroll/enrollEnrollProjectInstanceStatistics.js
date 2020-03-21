@@ -155,8 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var _login = __webpack_require__(/*! @/api/login.js */ 21);var _components;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniNoticeBar = function uniNoticeBar() {return __webpack_require__.e(/*! import() | components/uni-notice-bar/uni-notice-bar */ "components/uni-notice-bar/uni-notice-bar").then(__webpack_require__.bind(null, /*! @/components/uni-notice-bar/uni-notice-bar.vue */ 134));};var uniSection = function uniSection() {return __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 113));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 120));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 127));};var _default =
+var _project = __webpack_require__(/*! @/api/project.js */ 204);var _components;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniNoticeBar = function uniNoticeBar() {return __webpack_require__.e(/*! import() | components/uni-notice-bar/uni-notice-bar */ "components/uni-notice-bar/uni-notice-bar").then(__webpack_require__.bind(null, /*! @/components/uni-notice-bar/uni-notice-bar.vue */ 134));};var uniSection = function uniSection() {return __webpack_require__.e(/*! import() | components/uni-section/uni-section */ "components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/components/uni-section/uni-section.vue */ 113));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 120));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 127));};var _default =
 {
   components: (_components = { uniNoticeBar: uniNoticeBar, uniSection: uniSection }, _defineProperty(_components, "uniSection",
   uniSection), _defineProperty(_components, "uniList",
@@ -171,26 +170,23 @@ var _login = __webpack_require__(/*! @/api/login.js */ 21);var _components;funct
       instanceId: '',
       instanceName: '',
       retType: '',
-      ProjectInstanceList: [] };
+      projectList: [] };
 
   },
   onLoad: function onLoad() {var _this = this;
 
-    (0, _login.getEnrollProjectInstanceList)({}).then(function (res) {
-      _this.ProjectInstanceList = res.data.projectList;
-      _this.retType = res.data.retType;
+    (0, _project.getEnrollProjectInfoListOfManage)({}).then(function (res) {
+      _this.projectList = res.data;
 
-      if (_this.retType === 1) {
-        _this.showyemian = true;
-      }
+
     }).catch(function (err) {
 
     });
   },
   methods: {
-    entry: function entry(instanceId) {
+    entry: function entry(projectId) {
       uni.navigateTo({
-        url: '../baoming/baoming?instanceId=' + instanceId + '' });
+        url: './addInstanceLIst?projectId=' + projectId + '' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

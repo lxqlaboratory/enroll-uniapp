@@ -7979,6 +7979,43 @@ internalMixin(Vue);
 
 /***/ }),
 
+/***/ 204:
+/*!*************************************************!*\
+  !*** D:/hbni/test/enroll-uniapp/api/project.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getEnrollProjectInfoListOfManage = getEnrollProjectInfoListOfManage;exports.getEnrollProjectInstanceListOfProject = getEnrollProjectInstanceListOfProject;exports.getEnrollProjectInstanceDetail = getEnrollProjectInstanceDetail;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getEnrollProjectInfoListOfManage(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInfoListOfManage',
+    method: 'POST',
+    data: data });
+
+}
+
+function getEnrollProjectInstanceListOfProject(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInstanceListOfProject',
+    method: 'POST',
+    data: data });
+
+}
+
+
+function getEnrollProjectInstanceDetail(data) {
+  return _request.default.request({
+    url: '/enroll/getEnrollProjectInstanceDetail',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
 /***/ 21:
 /*!***********************************************!*\
   !*** D:/hbni/test/enroll-uniapp/api/login.js ***!
@@ -10072,7 +10109,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务" }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/manageList": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/personList": { "navigationBarTitleText": "山东大学信息服务" }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务" }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务" }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务" }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务" }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/enroll/manageList": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } }, "pages/enroll/personList": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-search-bar": "/components/uni-search-bar/uni-search-bar", "uni-swipe-action": "/components/uni-swipe-action/uni-swipe-action", "uni-swipe-action-item": "/components/uni-swipe-action-item/uni-swipe-action-item", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section", "uni-search-bar": "/components/uni-search-bar/uni-search-bar", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-swipe-action": "/components/uni-swipe-action/uni-swipe-action", "uni-swipe-action-item": "/components/uni-swipe-action-item/uni-swipe-action-item" } }, "pages/fist/fist": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/enroll/enrollEnrollProjectInstanceApply": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/enroll/enrollEnrollProjectInstanceManage": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } }, "pages/enroll/enrollEnrollProjectInstanceStatistics": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } }, "pages/baoming/fillinfo": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/baoming/baoming": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section", "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar" } }, "pages/history/histroy": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/base/baseInfo": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/menu/menu": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar", "uni-section": "/components/uni-section/uni-section" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/enroll/addProject": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/enroll/addItemList": { "navigationBarTitleText": "山东大学信息服务", "usingComponents": { "uni-section": "/components/uni-section/uni-section", "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-section": "/components/uni-section/uni-section" } }, "pages/enroll/addInstanceLIst": { "navigationBarTitleText": "山东大学信息服务" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "山东大学信息服务", "navigationBarBackgroundColor": "#7acfa6", "backgroundColor": "#7acfa6" } };exports.default = _default;
 
 /***/ }),
 
