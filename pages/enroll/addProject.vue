@@ -326,7 +326,7 @@
 					
 					
 					
-					swipeClick(e, index,instanceId) {
+					swipeClick(e, index,itemId) {
 						let {
 							content
 						} = e

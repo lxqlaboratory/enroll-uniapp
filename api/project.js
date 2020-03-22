@@ -32,3 +32,13 @@ export function saveOrUpdateEnrollProjectInstance(data) {
 		data: data
 	})
 }
+
+
+
+export function getEnrollInstanceItemDetail(data) {
+	return request.request({
+		url: '/enroll/getEnrollInstanceItemDetail',
+		method: 'POST',
+		data: data
+	})
+}
