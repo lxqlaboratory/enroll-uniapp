@@ -152,12 +152,34 @@
 	
 	
 	<button class="button-cell" @click="submit">保存并提交</button>
+	
+	
+	
+	
+	<view>
+		<uni-section title="报名项" type="line"></uni-section>
+		<uni-swipe-action>
+			<uni-swipe-action-item v-for="(item,index) in ProjectInstanceList" :options="options2" :key="item.instanceId"  @click="swipeClick($event,index,item.instanceId)">
+				<text class="cont">{{item.instanceNum}}-{{item.instanceName}}-{{item.year}}年</text>
+			</uni-swipe-action-item>
+		</uni-swipe-action>
+		<button class="button-cell" @click="addItem">添加报名项</button>
+	</view>
+	
+	
+	
+	
+	
+	
+	
+	
 	</view>
 </template>
 
 <script>
 	import uniSection from '@/components/uni-section/uni-section.vue'
-	
+	import uniSwipeAction from '@/components/uni-swipe-action/uni-swipe-action.vue'
+	import uniSwipeActionItem from '@/components/uni-swipe-action-item/uni-swipe-action-item.vue'
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceDetail } from '@/api/project.js'
@@ -166,6 +188,8 @@
 		 components: {
 		 uniSection,
 		 uniList,
+		 uniSwipeAction,
+		 uniSwipeActionItem,
 		 uniListItem},
 		    data() {
 			    const currentDate = this.getDate({

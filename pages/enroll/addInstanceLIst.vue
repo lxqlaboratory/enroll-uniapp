@@ -67,7 +67,7 @@
 		 	
 		 		submit(){
 		 			uni.navigateTo({
-		 				url:'./onlyTianjia'
+		 				url:'./onlyTianjia?projectId='+this.projectId+''
 		 			})
 		 		},
 				swipeClick(e, index,instanceId) {

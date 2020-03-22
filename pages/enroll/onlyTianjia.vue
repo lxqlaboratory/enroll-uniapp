@@ -12,7 +12,7 @@
 	<view class="adBaseView">
 		<view class="adRowView">
 			<view class="headView"><view class="mustView" >*</view>项目描述</view>
-			<view style="width: 70%;"><input  class="input" v-model="instance.instanceDes" placeholder="请输入实力描述" /></view>
+			<view style="width: 70%;"><input  class="input" v-model="instance.instanceDes" placeholder="请输入实例名称" /></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
@@ -20,7 +20,7 @@
 	<view class="adBaseView">
 		<view class="adRowView">
 			<view class="headView"><view class="mustView" >*</view>年份</view>
-			<view style="width: 70%;"><text  class="count" />{{instance.year}}年</text></view>
+			<view style="width: 70%;"><input  class="input" v-model="instance.instanceDes" placeholder="请输入实力描述" /></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
@@ -161,6 +161,7 @@
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceDetail } from '@/api/project.js'
+	import  { saveOrUpdateEnrollProjectInstance } from '@/api/project.js'
 	export default {
 		 components: {
 		 uniSection,
@@ -191,6 +192,7 @@
 				showyemian: false,
 				showdetail: false,
 				index: 0,
+				projectId: '',
 				limitTypeList: [],
 				instanceId: '',
 				instanceName: '',
@@ -198,9 +200,9 @@
 				itemList: []
 			}
 		},
-		onLoad() {
+		onLoad(projectId) {
 			
-			
+			this.projectId = options.projectId
 			getEnrollProjectInstanceDetail({}).then(res => {
 							this.instance = res.data.instance
 							this.itemList = res.data.itemList
@@ -258,9 +260,14 @@
 				   
 				   
 			submit(){
-				uni.navigateTo({
-					url:'./addProject'
-				})
+				saveOrUpdateEnrollProjectInstance({instance: this.instance,projectId: this.projectId}).then(res => {
+								uni.switchTab({
+									url:'../fist/fist'
+								})
+								
+							}).catch(err => {
+								
+							})
 			},
 			getDate(type) {
 			            const date = new Date();
