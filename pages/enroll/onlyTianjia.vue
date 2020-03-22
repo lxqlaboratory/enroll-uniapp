@@ -20,7 +20,7 @@
 	<view class="adBaseView">
 		<view class="adRowView">
 			<view class="headView"><view class="mustView" >*</view>年份</view>
-			<view style="width: 70%;"><input  class="input" v-model="instance.year" placeholder="请输入年份" /></view>
+			<view style="width: 70%;"><text  class="count" />{{instance.year}}年</text></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
