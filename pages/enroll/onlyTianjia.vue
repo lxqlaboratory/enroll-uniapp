@@ -200,8 +200,8 @@
 				itemList: []
 			}
 		},
-		onLoad(projectId) {
-			
+		onLoad(options) {
+			console.log('111')
 			this.projectId = options.projectId
 			getEnrollProjectInstanceDetail({}).then(res => {
 							this.instance = res.data.instance
