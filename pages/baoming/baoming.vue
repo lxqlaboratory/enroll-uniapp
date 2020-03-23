@@ -2,7 +2,9 @@
 	<view >
 		<uni-section :title="instanceName" type="line"></uni-section>
 			<view class="example-body">
-				<uni-notice-bar :text="instanceDes" />
+			<view class="fuwenben">
+					 <rich-text :nodes="instanceDes"></rich-text>
+			</view>
 			</view>
 			 
 			<button class="button-cell" @click="baoming">进入报名 </button>
@@ -28,6 +30,7 @@ import  { enrollProjectInstanceApply } from '@/api/menu.js'
 				retType: '',
 				instanceName: '',
 				instanceDes: '',
+
 				itemList: []
 			}
 		},

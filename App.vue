@@ -24,8 +24,23 @@
 	/* margin-left: 30upx; */
 	font-size: 28upx;
 	}
-	
-	
+	.fuwenben{
+      	border: 2upx solid #7acfa6;	
+		padding-top: 3upx;
+		
+		margin-left: 5upx;
+		margin-right: 5upx;
+	}
+	.shuoming{
+		width: 90%;
+		font-size: 30upx;
+		word-break: break-all;/*属性规定自动换行的处理方法。normal(使用浏览器默认的换行规则。),break-all(允许在单词内换行。),keep-all(只能在半角空格或连字符处换行。)*/
+				text-overflow: ellipsis;
+				display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+				-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+				-webkit-line-clamp: 3; /** 显示的行数 **/
+				overflow: hidden;  /** 隐藏超出的内容 **/
+	}
 	
 	.adBaseView {
 		width: 100%;

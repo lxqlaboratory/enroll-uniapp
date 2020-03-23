@@ -230,11 +230,11 @@
 			}
 		},
 		onLoad(options) {
-			console.log('111')
 			this.projectId = options.projectId
-			getEnrollProjectInstanceDetail({}).then(res => {
+			this.instanceId = options.instanceId
+			getEnrollProjectInstanceDetail({instanceId: this.instanceId}).then(res => {
 							this.instance = res.data.instance
-							this.itemList = res.data.itemList
+							this.item = res.data.item
 							this.index = res.data.instance.limitTypeIndex
 							this.limitTypeList = res.data.instance.limitTypeList
 							
