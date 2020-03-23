@@ -11,8 +11,8 @@
 	
 	<view class="adBaseView">
 		<view class="adRowView">
-			<view class="headView"><view class="mustView" >*</view>项目描述</view>
-			<view style="width: 70%;"><input  class="input" v-model="instance.instanceDes" placeholder="请输入实力描述" /></view>
+			<view class="headView"><view class="mustView" >*</view>报名说明</view>
+			<view style="width: 70%;"><input  class="input" v-model="instance.instanceDes" placeholder="请输入报名说明" /></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
@@ -20,7 +20,7 @@
 	<view class="adBaseView">
 		<view class="adRowView">
 			<view class="headView"><view class="mustView" >*</view>年份</view>
-			<view style="width: 70%;"><input  class="input" v-model="instance.year" placeholder="请输入年份" /></view>
+			<view style="width: 70%;"><input  class="input" v-model="instance.year" placeholder="例:2020" /></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
@@ -323,7 +323,9 @@
 					
 					
 					
-					
+					addItem(){
+						
+					},
 					
 					
 					swipeClick(e, index,itemId) {
@@ -359,7 +361,7 @@
 							});
 						} else {
 							uni.navigateTo({
-								url:'./addProject?instanceId='+instanceId+'&&projectId='+this.projectId+''
+								url:'./addNewItem?itemId='+itemId+''
 							})
 							
 						}

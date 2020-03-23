@@ -21,6 +21,7 @@
 	
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceListOfProject } from '@/api/project.js'
+	import  { deleteEnrollProjectInstance } from '@/api/project.js'
 	export default {
 		 components: {uniNoticeBar,
 		 uniSection,
@@ -81,11 +82,21 @@
 							success: (res) => {
 								if (res.confirm) {
 									
-									enrollItemPersonApplyCancel({itemPersonId:id}).then(res => {
+									deleteEnrollProjectInstance({instanceId:instanceId}).then(res => {
 													 if(res.re === 1){
-														 this.personList.splice(index,1);
+														 this.ProjectInstanceList.splice(index,1);
 														 uni.showToast({
 														 	title: `删除成功`,
+														 	icon: 'none'
+														 })
+													 }else if(res.data === '存在申请人，不能删除'){
+														 uni.showToast({
+														 	title: `存在申请人，不能删除`,
+														 	icon: 'none'
+														 })
+													 }else if(res.data === '存在限制申请人，不能删除'){
+														 uni.showToast({
+														 	title: `存在限制申请人，不能删除`,
 														 	icon: 'none'
 														 })
 													 }

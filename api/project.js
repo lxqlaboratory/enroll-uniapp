@@ -33,7 +33,13 @@ export function saveOrUpdateEnrollProjectInstance(data) {
 	})
 }
 
-
+export function deleteEnrollProjectInstance(data) {
+	return request.request({
+		url: '/enroll/deleteEnrollProjectInstance',
+		method: 'POST',
+		data: data
+	})
+}
 
 export function getEnrollInstanceItemDetail(data) {
 	return request.request({
