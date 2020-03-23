@@ -4,7 +4,7 @@
 	<view class="adBaseView">
 		<view class="adRowView">
 			<view class="headView"><view class="mustView" >*</view>项目名称</view>
-			<view style="width: 70%;"><input  class="input" v-model="instance.instanceName" placeholder="请输入实例名称" /></view>
+			<view style="width: 70%;"><input  class="input" v-model="instance.instanceName" placeholder="请输入项目名称" /></view>
 		</view>
 		<view class="bottomLine"/>
 	</view>
@@ -148,49 +148,47 @@
 	</view>
 	
 	
+	<uni-section title="填写具体项" type="line"></uni-section>
+	<view class="adBaseView">
+		<view class="adRowView">
+			<view class="headView"><view class="mustView" >*</view>名称</view>
+			<view style="width: 70%;"><input  class="input" v-model="item.itemName" placeholder="请输入名称" /></view>
+		</view>
+		<view class="bottomLine"/>
+	</view>
 	
+	<view class="adBaseView">
+		<view class="adRowView">
+			<view class="headView"><view class="mustView" >*</view>需要人数</view>
+			<view style="width: 70%;"><input  class="input" v-model="item.needCount" placeholder="请输入需要人数" /></view>
+		</view>
+		<view class="bottomLine"/>
+	</view>
 	
-	
-	<button class="button-cell" @click="submit">保存并提交</button>
-	
-	
-	
-	
-	<view>
-		<uni-section title="报名项" type="line"></uni-section>
-		<uni-swipe-action>
-			<uni-swipe-action-item v-for="(item,index) in itemList" :options="options2" :key="item.itemId"  @click="swipeClick($event,index,item.itemId)">
-				<text class="cont">{{item.itemName}}-{{item.needCount}}人</text>
-			</uni-swipe-action-item>
-		</uni-swipe-action>
-		<button class="button-cell" @click="addItem">添加报名项</button>
+	<view class="adBaseView">
+		<view class="adRowView">
+			<view class="headView"><view class="mustView" >*</view>属性1</view>
+			<view style="width: 70%;"><input  class="input" v-model="item.attribute1" placeholder="请输入属性1" /></view>
+		</view>
+		<view class="bottomLine"/>
 	</view>
 	
 	
-	
-	
-	
-	
-	
-	
+	<button class="button-cell" @click="submit">保存并提交</button>
 	</view>
 </template>
 
 <script>
 	import uniSection from '@/components/uni-section/uni-section.vue'
-	import uniSwipeAction from '@/components/uni-swipe-action/uni-swipe-action.vue'
-	import uniSwipeActionItem from '@/components/uni-swipe-action-item/uni-swipe-action-item.vue'
+	
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceDetail } from '@/api/project.js'
 	import  { saveOrUpdateEnrollProjectInstance } from '@/api/project.js'
-	import  { deleteEnrollInstanceItem } from '@/api/project.js'
 	export default {
 		 components: {
 		 uniSection,
 		 uniList,
-		 uniSwipeAction,
-		 uniSwipeActionItem,
 		 uniListItem},
 		    data() {
 			    const currentDate = this.getDate({
@@ -213,27 +211,21 @@
 					viewStartDate: '',
 					viewStartTime: ''
 				},
-				options2: [{
-					text: '编辑',
-					style: {
-						backgroundColor: '#7acfa6'
-					}
-				}, {
-					text: '删除',
-					style: {
-						backgroundColor: 'rgb(255,58,49)'
-					}
-				}],
-				projectId: '',
 				date: currentDate,
 				showyemian: false,
 				showdetail: false,
 				index: 0,
+				projectId: '',
 				limitTypeList: [],
 				instanceId: '',
 				instanceName: '',
 				retType: '',
-				itemList: []
+				item: {
+					itemId: '',
+					itemName: '',
+					needCount: '',
+					attribute1: ''
+					}
 			}
 		},
 		onLoad(options) {
@@ -241,7 +233,7 @@
 			this.instanceId = options.instanceId
 			getEnrollProjectInstanceDetail({instanceId: this.instanceId}).then(res => {
 							this.instance = res.data.instance
-							this.itemList = res.data.itemList
+							this.item = res.data.item
 							this.index = res.data.instance.limitTypeIndex
 							this.limitTypeList = res.data.instance.limitTypeList
 							
@@ -296,7 +288,7 @@
 				   
 				   
 			submit(){
-				saveOrUpdateEnrollProjectInstance({instance: this.instance,projectId: this.projectId}).then(res => {
+				saveOrUpdateEnrollProjectInstance({instance: this.instance,projectId: this.projectId,item:this.item}).then(res => {
 								uni.switchTab({
 									url:'../fist/fist'
 								})
@@ -304,7 +296,6 @@
 							}).catch(err => {
 								
 							})
-				
 			},
 			getDate(type) {
 			            const date = new Date();
@@ -320,195 +311,10 @@
 			            month = month > 9 ? month : '0' + month;;
 			            day = day > 9 ? day : '0' + day;
 			            return `${year}-${month}-${day}`;
-			        },
-					
-					
-					
-					addItem(){
-						uni.navigateTo({
-							url:'./addnofistItem?instanceId='+this.instanceId+''
-						})
-					},
-					
-					
-					swipeClick(e, index,itemId) {
-						let {
-							content
-						} = e
-						if (content.text === '删除') {
-							uni.showModal({
-								title: '提示',
-								content: '是否删除',
-								success: (res) => {
-									if (res.confirm) {
-										
-										deleteEnrollInstanceItem({itemId:itemId}).then(res => {
-														 if(res.re === 1){
-															 this.itemList.splice(index,1);
-															 uni.showToast({
-															 	title: `删除成功`,
-															 	icon: 'none'
-															 })
-														 }
-														 else{
-															 uni.showToast({
-															 	title: `存在申请人，不能删除`,
-															 	icon: 'none'
-															 })
-														 }
-													
-													}).catch(err => {
-														
-													})
-									} else  {
-										uni.showToast({
-											title: `已取消操作`,
-											icon: 'none'
-										})
-									}
-								}
-							});
-						} else {
-							uni.navigateTo({
-								url:'./addNewItem?itemId='+itemId+''
-							})
-							
-						}
-								
-					}
-								
+			        }
 		}
 	}
 </script>
 
 <style>
-	.cont {
-		flex: 1;
-		height: 45px;
-		line-height: 45px;
-		padding: 0 15px;
-		position: relative;
-		background-color: #fff;
-		font-size: 15px;
-		border-bottom-color: #F5F5F5;
-		border-bottom-width: 1px;
-		border-bottom-style: solid;
-	}
-	
-	/* 头条小程序组件内不能引入字体 */
-	/* #ifdef MP-TOUTIAO */
-	@font-face {
-		font-family: uniicons;
-		font-weight: normal;
-		font-style: normal;
-		src: url('~@/static/uni.ttf') format('truetype');
-	}
-	
-	/* #endif */
-	
-	/* #ifndef APP-NVUE */
-	page {
-		display: flex;
-		flex-direction: column;
-		box-sizing: border-box;
-		background-color: #efeff4;
-		min-height: 100%;
-		height: auto;
-	}
-	
-	view {
-		font-size: 14px;
-		line-height: inherit;
-	}
-	
-	.example {
-		padding: 0 15px 15px;
-	}
-	
-	.example-info {
-		padding: 15px;
-		color: #3b4144;
-		background: #ffffff;
-	}
-	
-	.example-body {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		padding: 0;
-		font-size: 14px;
-		background-color: #ffffff;
-	}
-	
-	/* #endif */
-	.example {
-		padding: 0 15px;
-	}
-	
-	.example-info {
-		/* #ifndef APP-NVUE */
-		display: block;
-		/* #endif */
-		padding: 15px;
-		color: #3b4144;
-		background-color: #ffffff;
-		font-size: 14px;
-		line-height: 20px;
-	}
-	
-	.example-info-text {
-		font-size: 14px;
-		line-height: 20px;
-		color: #3b4144;
-	}
-	
-	
-	.example-body {
-		flex-direction: column;
-		padding: 15px;
-		background-color: #ffffff;
-	}
-	
-	.word-btn-white {
-		font-size: 18px;
-		color: #FFFFFF;
-	}
-	
-	.word-btn {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		border-radius: 6px;
-		height: 48px;
-		margin: 15px;
-		background-color: #007AFF;
-	}
-	
-	.word-btn--hover {
-		background-color: #4ca2ff;
-	}
-	
-	
-	
-	.search-result {
-		margin-top: 10px;
-		margin-bottom: 20px;
-		text-align: center;
-	}
-	
-	.search-result-text {
-		text-align: center;
-		font-size: 14px;
-	}
-	
-	.example-body {
-		/* #ifndef APP-NVUE */
-		display: block;
-		/* #endif */
-		padding: 0px;
-	}
 </style>
-

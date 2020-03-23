@@ -20,7 +20,31 @@
 				}
 			},
 			{
+				"path": "pages/enroll/fistEditIns",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/fistAddinsItem",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/fistAddIns",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/enroll/manageList",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
+				"path": "pages/enroll/addnofistItem",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"
 				}

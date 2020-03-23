@@ -2,7 +2,7 @@
 	<view>
 		<uni-section title="报名项目" type="line"></uni-section>
 	<uni-list v-for="items in projectList" :key="items.projectId">
-			<uni-list-item :show-arrow="true" :title="items.projectName" @click="entry(items.projectId)"/>
+			<uni-list-item :show-arrow="true" :title="items.projectName" @click="entry(items.projectId,items.projectType)"/>
 		</uni-list>
 		
 		
@@ -44,10 +44,17 @@
 						})
 		},
 		methods:{
-			entry(projectId){
-				uni.navigateTo({
-					url:'./addInstanceLIst?projectId='+projectId+''
-				})
+			entry(projectId,projectType){
+				if(projectType==='02'){
+					uni.navigateTo({
+						url:'./addInstanceLIst?projectId='+projectId+''
+					})
+				}else if(projectType==='01'){
+					uni.navigateTo({
+						url:'./fistAddinsItem?projectId='+projectId+''
+					})
+				}
+				
 			}
 		}
 	}

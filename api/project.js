@@ -59,4 +59,10 @@ export function saveOrUpdateEnrollInstanceItem(data) {
 }
 
 
-
+export function deleteEnrollInstanceItem(data) {
+	return request.request({
+		url: '/enroll/deleteEnrollInstanceItem',
+		method: 'POST',
+		data: data
+	})
+}
