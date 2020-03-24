@@ -1,7 +1,7 @@
 <template>
 	<view class="adBaseView" >		 
 		<view class="cloumnlist">
-			监考报名
+			报名记录
 		</view>
 		<view class="bottomLine"/>
 		
