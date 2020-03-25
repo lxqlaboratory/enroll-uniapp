@@ -1,9 +1,7 @@
 <template>
-	<view class="adBaseView" >		 
-		<view class="cloumnlist">
-			监考报名
-		</view>
-		<view class="bottomLine"/>
+	<view>
+	<uni-section title="报名记录" type="line"></uni-section>
+	
 		
 		
 		
@@ -15,8 +13,9 @@
 
 <script>
 	   import  { personBaseInfoMaintainInit } from '@/api/baseInfo.js'
+	   import uniSection from '@/components/uni-section/uni-section.vue'
 		export default {
-			 
+			  components: {uniSection},
 			data() {
 				return {
 					perName: '',
