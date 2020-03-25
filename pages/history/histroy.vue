@@ -42,7 +42,7 @@
 			methods:{
 				donlowd(){
 					uni.downloadFile({
-					    url: 'http://localhost:8080/func/enroll/downloadEnrollAppointment', 
+					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment', 
 					    success: (res) => {
 					        if (res.statusCode === 200) {
 								

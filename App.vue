@@ -1,7 +1,8 @@
 <script>
 	export default {
 		globalData: {
-		            vueSessionId: ''  
+		            vueSessionId: '',
+				enrollurl: 'https://enroll.sdu.edu.cn/func'
 		        },
 		onLaunch: function() {
 			console.log('App Launch')
