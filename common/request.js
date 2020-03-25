@@ -3,8 +3,8 @@ import Request from '@/request/index.js'
 
 // 切换baseUrl 
 const config = {
-	//baseUrl: 'http://222.194.64.97/func',
-    baseUrl: 'http://localhost:8080/func',
+	baseUrl: 'https://enroll.sdu.edu.cn/func',
+    //baseUrl: 'http://localhost:8080/func',
 	header: {"Content-Type": "application/json",
 	},
 	cancelReject: {
@@ -23,7 +23,8 @@ const reqInterceptor = async (options) => {
     //    if(!options.data){
 	// 	options.data={}
 	// }
-	if(options.url != 'http://localhost:8080/func/auth/webLogin')
+//	if(options.url != 'http://localhost:8080/func/auth/webLogin')
+	if(options.url != 'https://enroll.sdu.edu.cn/func/auth/webLogin')
     {options.header= {"Content-Type": "application/json",
 	"Cookie":"JSESSIONID="+getApp().globalData.vueSessionId}}
 	return options
