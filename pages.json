@@ -14,6 +14,12 @@
 				}
 			},
 			{
+				"path": "pages/baoming/showDetais",
+				"style": {
+					"navigationBarTitleText": "山东大学信息服务"
+				}
+			},
+			{
 				"path": "pages/enroll/addNewItem",
 				"style": {
 					"navigationBarTitleText": "山东大学信息服务"
@@ -153,12 +159,12 @@
 			    "selectedIconPath": "static/image/tabBar/index@active.png",
 			    "text": "首页"
 			},
-			{
-	        "pagePath": "pages/history/histroy",
-	        "iconPath": "static/image/tabBar/news.png",
-	        "selectedIconPath": "static/image/tabBar/news@active.png",
-	        "text": "记录"
-	    },
+			// {
+	  //       "pagePath": "pages/history/histroy",
+	  //       "iconPath": "static/image/tabBar/news.png",
+	  //       "selectedIconPath": "static/image/tabBar/news@active.png",
+	  //       "text": "记录"
+	  //   },
 		{
 		    "pagePath": "pages/base/baseInfo",
 		    "iconPath": "static/image/tabBar/about.png",

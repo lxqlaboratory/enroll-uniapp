@@ -4,7 +4,13 @@
 	<uni-section title="请选择报名地点" type="line"></uni-section>
 	<view class="adBaseView" v-for="items in applyList" :key="items.itemId" @click="submit1(items.itemId,items.enrollMode,items.itemName)" >
 		<view class="cloumnlist" >
-			{{items.itemName}}-{{items.needCount}}人
+			{{items.itemName}}
+		</view>
+		<view class="cloumnlist" v-for="index in items.auxiliaryList">
+			{{index}}
+		</view>
+		<view class="cloumnlist" >
+			需要{{items.needCount}}人
 		</view>
 		<view class="bottomLine2"/>
 	</view>
@@ -15,7 +21,13 @@
 	<uni-section title="候选报名地点" type="line"></uni-section>
 	<view class="adBaseView" v-for="items in candidateList" :key="items.itemId" @click="submit2(items.itemId,items.enrollMode,items.itemName)" >
 		<view class="cloumnlist" >
-			{{items.itemName}}-{{items.needCount}}人
+			{{items.itemName}}
+		</view>
+		<view class="cloumnlist" v-for="index in items.auxiliaryList">
+			{{index}}
+		</view>
+		<view class="cloumnlist" >
+			需要{{items.needCount}}人
 		</view>
 		<view class="bottomLine2"/>
 	</view>
@@ -68,7 +80,7 @@
 										 	
 										  });
 										 uni.switchTab({
-										 	url:'../history/histroy'
+										 	url:'../fist/fist'
 										 })
 									 }
 									 else{
@@ -119,7 +131,7 @@
 		 								 	
 		 								  });
 		 								 uni.switchTab({
-		 								 	url:'../history/histroy'
+		 								 	url:'../fist/fist'
 		 								 })
 		 							 }
 		 							 else{

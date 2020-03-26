@@ -42,13 +42,7 @@ import  { enrollProjectInstanceApply } from '@/api/menu.js'
 							 this.instanceName = res.data.instanceName
 						
 							 this.retType = res.data.retType
-							 if(this.retType === 4)
-							 {
-								 
-								 uni.switchTab({
-								 	url:'../history/histroy'
-								 })
-								 }
+						
 						}).catch(err => {
 							
 						})
@@ -56,9 +50,18 @@ import  { enrollProjectInstanceApply } from '@/api/menu.js'
 		methods:{
 			
 			baoming(){
-				uni.navigateTo({
-					url:'../baoming/fillinfo?instanceId='+this.instanceId+''
-				})
+				if(this.retType === 4)
+				 {
+					 
+					uni.navigateTo({
+						url:'./showDetais?instanceId='+this.instanceId+''
+					})
+				}else if(this.retType === 3){
+					uni.navigateTo({
+						url:'../baoming/fillinfo?instanceId='+this.instanceId+''
+					})
+				}
+				
 			}
 		}
 	}
