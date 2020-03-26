@@ -1,5 +1,5 @@
 {
-    "name" : "proctor",
+    "name" : "enroll",
     "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
@@ -57,7 +57,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxc02a8626fa48f39b",
         "setting" : {
             "urlCheck" : false
         },

@@ -19,7 +19,7 @@
 			 <button class="button-cell" @click="complete">完善个人信息</button>
 		 </view>
 		<view v-if="!showyemian" >
-		  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId)">
+		  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId,items.isApply)">
 			 
 			<view class="cloumnlist" >
 				{{items.instanceName}}
@@ -62,29 +62,46 @@
 				if(this.list.length===1)
 				{
 					this.showdetail = true
-		            
+		            getEnrollProjectInstanceList({}).then(res => {
+		            	if(res.re === -1){
+		            		this.showText = true
+		            		this.texta = res.data
+		            	}else{
+		            		this.ProjectInstanceList = res.data.projectList
+		            		this.retType = res.data.retType
+		            		
+		            		if(this.retType === 1){
+		            			this.showyemian = true;
+		            		}
+		            		if(this.ProjectInstanceList.length === 1 ){
+		            			if(this.ProjectInstanceList[0].isApply === true)
+		            			{
+		            				
+		            				uni.navigateTo({
+		            					url:'../baoming/showDetais?instanceId='+this.ProjectInstanceList[0].instanceId+''
+		            				})
+		            			}else if(this.ProjectInstanceList[0].isApply === false){
+		            				uni.navigateTo({
+		            					url:'../baoming/baoming?instanceId='+this.ProjectInstanceList[0].instanceId+''
+		            				})
+		            			}
+		            		}
+		            	}
+		            				
+		            			}).catch(err => {
+		            				
+		            			})
 				}else{
 					this.showdetail = false
 				}
 			}).catch(err => {
 				
 			})
-			getEnrollProjectInstanceList({}).then(res => {
-				if(res.re === -1){
-					this.showText = true
-					this.texta = res.data
-				}else{
-					this.ProjectInstanceList = res.data.projectList
-					this.retType = res.data.retType
-					
-					if(this.retType === 1){
-						this.showyemian = true;
-					}
-				}
-							
-						}).catch(err => {
-							
-						})
+		
+			
+				
+			
+			
 		},
 		methods:{
 			swtich(url) {
@@ -93,10 +110,19 @@
 					url:'../enroll/'+url
 				})
 			},
-			entry(instanceId){
-				uni.navigateTo({
-					url:'../baoming/baoming?instanceId='+instanceId+''
-				})
+			entry(instanceId,isApply){
+				if(isApply === true)
+				{
+					uni.navigateTo({
+						url:'../baoming/showDetais?instanceId='+instanceId+''
+						
+					})
+				}else if(isApply === false){
+					uni.navigateTo({
+						url:'../baoming/baoming?instanceId='+instanceId+''
+					})
+				}
+				
 			},
 			complete(){
 				uni.switchTab({

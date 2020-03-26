@@ -50,17 +50,11 @@ import  { enrollProjectInstanceApply } from '@/api/menu.js'
 		methods:{
 			
 			baoming(){
-				if(this.retType === 4)
-				 {
-					 
-					uni.navigateTo({
-						url:'./showDetais?instanceId='+this.instanceId+''
-					})
-				}else if(this.retType === 3){
+				
 					uni.navigateTo({
 						url:'../baoming/fillinfo?instanceId='+this.instanceId+''
 					})
-				}
+				
 				
 			}
 		}

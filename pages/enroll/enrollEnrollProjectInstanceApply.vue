@@ -2,7 +2,7 @@
 	<view>
 	<uni-section title="校内报名" type="line"/>
 			<view v-if="!showyemian" >
-			  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId)">
+			  <view class="adBaseView" v-for="items in ProjectInstanceList" :key="items.instanceId" @click="entry(items.instanceId,items.isApply)">
 				 
 				<view class="cloumnlist" >
 					{{items.instanceName}}
@@ -44,15 +44,37 @@
 							if(this.retType === 1){
 								this.showyemian = true;
 							}
+							if(this.ProjectInstanceList.length === 1){
+								if(this.ProjectInstanceList[0].isApply === true)
+								{
+		
+									uni.navigateTo({
+										url:'../baoming/showDetais?instanceId='+this.ProjectInstanceList[0].instanceId+''
+									})
+								}else if(this.ProjectInstanceList[0].isApply === false){
+									uni.navigateTo({
+										url:'../baoming/baoming?instanceId='+this.ProjectInstanceList[0].instanceId+''
+									})
+								}
+							}
 						}).catch(err => {
 							
 						})
 		},
 		methods:{
-			entry(instanceId){
-				uni.navigateTo({
-					url:'../baoming/baoming?instanceId='+instanceId+''
-				})
+			entry(instanceId,isApply){
+				if(isApply === true)
+				{
+					uni.navigateTo({
+						url:'../baoming/showDetais?instanceId='+instanceId+''
+						
+					})
+				}else if(isApply === false){
+					uni.navigateTo({
+						url:'../baoming/baoming?instanceId='+instanceId+''
+					})
+				}
+				
 			}
 		}
 	}

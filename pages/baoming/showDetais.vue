@@ -12,8 +12,9 @@
 			</view>
 			</view>
 			
-			
+			<view v-if="isExportPdf">
 			<button class="button-cell" @click="donlowd">下载pdf </button>
+			</view>
 	</view>
 </template>
 
@@ -25,9 +26,11 @@
 			 components: {uniNoticeBar,uniSection},
 			data() {
 				return {
+					isExportPdf: false,
 					instanceId: '',
 					retType: '',
 					index: 0,
+					itemPersonId: '',
 					instanceName: '',
 					instanceDes: '',
 	                resultList: '',
@@ -42,7 +45,8 @@
 								 this.instanceName = res.data.instanceName
 							     this.resultList =  res.data.resultList
 								 this.retType = res.data.retType
-						
+								 this.isExportPdf = res.data.isExportPdf
+						this.itemPersonId=res.data.itemPersonId
 							}).catch(err => {
 								
 							})
@@ -50,7 +54,7 @@
 			methods:{
 				donlowd(){
 					uni.downloadFile({
-					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment', 
+					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment?itemPersonId='+this.itemPersonId+'', 
 					    success: (res) => {
 					        if (res.statusCode === 200) {
 								
