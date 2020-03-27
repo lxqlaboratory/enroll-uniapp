@@ -1,82 +1,48 @@
 <template>
 	<view>
 	<uni-section title="报名记录" type="line"></uni-section>
-	
+	      <view v-for="items in ProjectInstanceList" :key="items.itemPersonId">
+		<uni-section :title="items.instanceName" type="line"></uni-section>
+		<uni-list  >
+			<uni-list-item :show-arrow="true" :title="items.itemName"  @click="entry(items.itemPersonId)"/>
+		</uni-list>
+		
+		</view>
 		
 		
-		
-		
-		
-		<button class="button-cell" @click="donlowd">下载pdf </button>
 	</view>
 </template>
 
 <script>
-	   import  { personBaseInfoMaintainInit } from '@/api/baseInfo.js'
+	import uniList from '@/components/uni-list/uni-list.vue'
+	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
+	   import  { getApplyedEnrollInstanceItemList } from '@/api/manage.js'
 	   import uniSection from '@/components/uni-section/uni-section.vue'
 		export default {
-			  components: {uniSection},
+			  components: { uniList,
+		 uniListItem,uniSection},
 			data() {
 				return {
-					perName: '',
-					perNum: '',
-					personId: '',
-					index: 0,
-					mobilePhone: '',
-					bankNo: '',
-					bankName: '',
-					collegeName: '',
-					secondPerType: '',
-					secondPerTypeList: [],
+					itemPersonId: '',
+			
 					ProjectInstanceList: []
 				}
 			},
-			onLoad(){
+			onShow(){
 				
-				personBaseInfoMaintainInit({}).then(res => {
-							
+				getApplyedEnrollInstanceItemList({}).then(res => {
+							this.ProjectInstanceList = res.data
 							}).catch(err => {
 								
 							})
 			},
 			methods:{
-				donlowd(){
-					uni.downloadFile({
-					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment', 
-					    success: (res) => {
-					        if (res.statusCode === 200) {
-								
-					            uni.showToast({
-					            	title: `下载成功`,
-					            	icon: 'none'
-					            })
-					        }
-					    }
-					});
-				},
-				submit(){
-					personBaseInfoMaintain({personId:this.personId,secondPerType:this.secondPerType,
-					mobilePhone:this.mobilePhone,bankNo:this.bankNo,bankName:this.bankName
-					}).then(res => {
-						if(res.re === 1){
-							uni.showModal({
-							    title: '提示',
-								showCancel: false,
-								confirmColor: "#000000",
-							    content: '提交成功',
-							    success: function (res) {
-							        if (res.confirm) {
-								
-							        } 
-							    }
-							});
-						}
+				entry(itemPersonId){
+					uni.navigateTo({
+						url:'./historyItem?itemPersonId='+itemPersonId+''
+					})
 						
-						}).catch(err => {
-							
-						})
-						
-					}
+				}
 			}
 	}
 </script>

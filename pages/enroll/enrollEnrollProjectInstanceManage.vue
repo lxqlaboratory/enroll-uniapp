@@ -1,4 +1,4 @@
-<template>
+AAA<template>
 	<view>
 		<uni-section title="报名管理" type="line"></uni-section>
 	    <uni-list v-for="items in ProjectInstanceList" :key="items.instanceId" >
@@ -15,7 +15,7 @@
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import  { getEnrollProjectInstanceListOfManage } from '@/api/manage.js'
 	export default {
-		 components: {uniNoticeBar,uniSection,
+		 components: {uniNoticeBar,
 		 uniSection,
 		 uniList,
 		 uniListItem},

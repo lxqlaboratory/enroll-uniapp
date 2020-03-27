@@ -47,3 +47,18 @@ export function enrollItemPersonApplyAdd(data) {
 		data: data
 	})
 }
+
+export function getApplyedEnrollInstanceItemList(data) {
+	return request.request({
+		url: '/enroll/getApplyedEnrollInstanceItemList',
+		method: 'POST',
+		data: data
+	})
+}
+export function getApplyedEnrollInstanceItem(data) {
+	return request.request({
+		url: '/enroll/getApplyedEnrollInstanceItem',
+		method: 'POST',
+		data: data
+	})
+}
