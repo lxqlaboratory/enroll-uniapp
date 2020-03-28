@@ -4,152 +4,152 @@
 			{
 				"path": "pages/login/login",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/index/index",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/baoming/showDetais",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/addNewItem",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/fistEditIns",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/fistAddinsItem",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/fistAddIns",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/manageList",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/addnofistItem",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/onlyTianjia",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/addInstanceLIst",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/addProject",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/addItemList",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/personList",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/fist/fist",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/enrollEnrollProjectInstanceApply",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/enrollEnrollProjectInstanceManage",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/enroll/enrollEnrollProjectInstanceStatistics",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/baoming/fillinfo",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/baoming/baoming",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/history/histroy",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/history/historyItem",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/base/baseInfo",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			},
 			{
 				"path": "pages/menu/menu",
 				"style": {
-					"navigationBarTitleText": "山东大学信息服务"
+					"navigationBarTitleText": "山东大学校内报名"
 				}
 			}
 		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "山东大学信息服务",
+		"navigationBarTitleText": "山东大学校内报名",
 		"navigationBarBackgroundColor": "#7acfa6",
 		"backgroundColor": "#7acfa6"
 	},

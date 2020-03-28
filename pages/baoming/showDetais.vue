@@ -57,7 +57,20 @@
 					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment?itemPersonId='+this.itemPersonId+'', 
 					    success: (res) => {
 					        if (res.statusCode === 200) {
-								
+								var filePath = res.tempFilePath;
+								        console.log(filePath);
+								    uni.openDocument({
+								                    filePath: filePath,
+								                    success: function(res) {
+								                        console.log('打开文档成功')
+								                    },
+								                    fail: function(res) {
+								                        console.log(res);
+								                    },
+								                    complete: function(res) {
+								                        console.log(res);
+								                    }
+								                })
 					            uni.showToast({
 					            	title: `下载成功`,
 					            	icon: 'none'
