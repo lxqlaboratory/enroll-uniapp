@@ -82,7 +82,7 @@
 				ProjectInstanceList: []
 			}
 		},
-		onShow(){
+		onLoad(){
 			
 			personBaseInfoMaintainInit({}).then(res => {
 							 this.secondPerTypeList = res.data.secondPerTypeList
