@@ -94,6 +94,7 @@
 							this.bankNo = res.data.bankNo
 							this.bankName = res.data.bankName
 							this.collegeName = res.data.collegeName
+							this.secondPerType = this.secondPerTypeList[this.index].value
 						}).catch(err => {
 							
 						})
@@ -117,7 +118,9 @@
 						    content: '提交成功',
 						    success: function (res) {
 						        if (res.confirm) {
-							
+							          uni.switchTab({
+							          	url:'../fist/fist'
+							          })
 						        } 
 						    }
 						});

@@ -79,7 +79,12 @@
 					
 					if(this.retType === 1){
 						this.showyemian = true;
+						this.showText = true;
+					}else if(this.retType === 2 ){
+						this.showText = false;
 					}
+					
+					
 					if(this.ProjectInstanceList.length === 1 ){
 					
 					}
