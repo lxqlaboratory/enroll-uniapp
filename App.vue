@@ -2,7 +2,8 @@
 	export default {
 		globalData: {
 		            vueSessionId: '',
-				enrollurl: 'https://enroll.sdu.edu.cn/func'
+//				enrollurl: 'https://enroll.sdu.edu.cn/func'
+				enrollurl: 'http://222.194.64.97/func'
 		        },
 		onLaunch: function() {
 			console.log('App Launch')
