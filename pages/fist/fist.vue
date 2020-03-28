@@ -55,42 +55,13 @@
 				ProjectInstanceList: []
 			}
 		},
-		onLoad() {
+		onShow() {
 			
 		   MenuList({}).then(res => {
 				 this.list = res.data
 				if(this.list.length===1)
 				{
 					this.showdetail = true
-		            getEnrollProjectInstanceList({}).then(res => {
-		            	if(res.re === -1){
-		            		this.showText = true
-		            		this.texta = res.data
-		            	}else{
-		            		this.ProjectInstanceList = res.data.projectList
-		            		this.retType = res.data.retType
-		            		
-		            		if(this.retType === 1){
-		            			this.showyemian = true;
-		            		}
-		            		if(this.ProjectInstanceList.length === 1 ){
-		            			if(this.ProjectInstanceList[0].isApply === true)
-		            			{
-		            				
-		            				uni.navigateTo({
-		            					url:'../baoming/showDetais?instanceId='+this.ProjectInstanceList[0].instanceId+''
-		            				})
-		            			}else if(this.ProjectInstanceList[0].isApply === false){
-		            				uni.navigateTo({
-		            					url:'../baoming/baoming?instanceId='+this.ProjectInstanceList[0].instanceId+''
-		            				})
-		            			}
-		            		}
-		            	}
-		            				
-		            			}).catch(err => {
-		            				
-		            			})
 				}else{
 					this.showdetail = false
 				}
@@ -98,7 +69,25 @@
 				
 			})
 		
-			
+			getEnrollProjectInstanceList({}).then(res => {
+				if(res.re === -1){
+					this.showText = true
+					this.texta = res.data
+				}else{
+					this.ProjectInstanceList = res.data.projectList
+					this.retType = res.data.retType
+					
+					if(this.retType === 1){
+						this.showyemian = true;
+					}
+					if(this.ProjectInstanceList.length === 1 ){
+					
+					}
+				}
+							
+						}).catch(err => {
+							
+						})
 				
 			
 			
