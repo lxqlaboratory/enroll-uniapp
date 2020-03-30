@@ -21,7 +21,7 @@
 				<view class="form-input">
 					<input type="password" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
 				</view>
-				<button type="primary" form-type="submit">登录</button>
+				<button type="primary" form-type="submit">绑定微信</button>
 			</form>
 		</view>
 	</view>
@@ -34,9 +34,14 @@
 			return {
 				hideEyes: false,
 				loginName: '',
+				code: '',
 				password: ''
 			}
 		},
+		onLoad(options) {
+			
+			this.code = options.code
+			},
 		methods: {
 			passwordF_B() {
 				this.hideEyes = !this.hideEyes;
@@ -46,7 +51,7 @@
 			// uni.switchTab({
 			// 	url:'../menu/menu'
 			// })
-				login({loginName: this.loginName,password:this.password}).then(res => {
+				login({loginName: this.loginName,password:this.password,code:this.code}).then(res => {
 				 getApp().globalData.vueSessionId = res.sessionId
 				 console.log(getApp().globalData.vueSessionId)
 				 if(res.reCode === '0'){
@@ -57,7 +62,7 @@
 				 }else{
 					 uni.showModal({
 					     title: '提示',
-					     content: '登录信息错误',
+					     content: '账户信息错误',
 					     success: function (res) {
 					         if (res.confirm) {
 					             console.log('确定');

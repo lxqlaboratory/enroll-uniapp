@@ -74,14 +74,20 @@
 						
 			             enrollProjectInstanceItemSubmit({itemId:itemId,enrollMode:enrollMode}).then(res => {
 			             		     if(res.re===1){
-										 uni.showToast({
-										      title: '报名成功',
-										      duration: 2000
-										 	
-										  });
-										 uni.switchTab({
-										 	url:'../fist/fist'
-										 })
+										 uni.showModal({
+										     title: '提示',
+										 	showCancel: false,
+										 	confirmColor: "#000000",
+										     content: '报名成功',
+										     success: function (res) {
+										         if (res.confirm) {
+										 	        uni.switchTab({
+										 	        	url:'../history/history'
+										 	        })
+										         } 
+										     }
+										 });
+									
 									 }
 									 else{
 								uni.showModal({
