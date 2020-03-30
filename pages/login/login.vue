@@ -41,9 +41,8 @@
 		onLoad() {
 			
 		
-			},
+		},
 		methods: {
-			
 			passwordF_B() {
 				this.hideEyes = !this.hideEyes;
 			},

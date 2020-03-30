@@ -107,7 +107,7 @@
 	   width: 45%;
 	   font-size: 28upx;
 	   margin-top: 10upx;
-	   background-color: #FF0000;
+	   background-color: #DD524D;
 	
 	}
 	.bottomLine2 {
