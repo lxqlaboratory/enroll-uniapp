@@ -18,14 +18,14 @@
 				  
                  login({code:res.code}).then(res2 => {
                  	 if(res2.reCode === '0'){
-						 getApp().globalData.vueSessionId = res.sessionId
+						 getApp().globalData.vueSessionId = res2.sessionId
 						 console.log(getApp().globalData.vueSessionId)
                  		 uni.switchTab({
                  		 	url:'../fist/fist'
                  		 })
                  	 }else{
                  		 uni.navigateTo({
-                 		 	url:'../login/login?code='+res.code+''
+                 		 	url:'../login/login'
                  		 })
                  	 }
                  	

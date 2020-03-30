@@ -38,23 +38,27 @@
 				password: ''
 			}
 		},
-		onLoad(options) {
+		onLoad() {
 			
-			this.code = options.code
+		
 			},
 		methods: {
+			
 			passwordF_B() {
 				this.hideEyes = !this.hideEyes;
 			},
 			formSubmit(e) {	
-				console.log(this.loginName);
+				var that = this;
+				console.log(that.loginName);
 			// uni.switchTab({
 			// 	url:'../menu/menu'
 			// })
-				login({loginName: this.loginName,password:this.password,code:this.code}).then(res => {
-				 getApp().globalData.vueSessionId = res.sessionId
+			wx.login({
+			  success (res) {
+				login({loginName: that.loginName,password:that.password,code:res.code}).then(res2 => {
+				 getApp().globalData.vueSessionId = res2.sessionId
 				 console.log(getApp().globalData.vueSessionId)
-				 if(res.reCode === '0'){
+				 if(res2.reCode === '0'){
 					 uni.switchTab({
 					 	url:'../fist/fist'
 					 })
@@ -75,6 +79,8 @@
 	
 			}).catch(err => {
 				
+			})
+			}
 			})
 			}
 		}

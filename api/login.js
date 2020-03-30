@@ -21,3 +21,10 @@ export function getEnrollProjectInstanceList(data) {
 		data: data
 	})
 }
+export function unbounding(data) {
+	return request.request({
+		url: '/auth/unbounding',
+		method: 'POST',
+		data: data
+	})
+}

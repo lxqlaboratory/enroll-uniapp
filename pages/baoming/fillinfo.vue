@@ -82,7 +82,7 @@
 										     success: function (res) {
 										         if (res.confirm) {
 										 	        uni.switchTab({
-										 	        	url:'../history/history'
+										 	        	url:'../history/histroy'
 										 	        })
 										         } 
 										     }

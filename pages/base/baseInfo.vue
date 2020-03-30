@@ -57,6 +57,7 @@
 				<view class="bottomLine"/>
 			</view>				
 			<button class="button-cell" @click="submit">保存并提交</button>
+			<button class="button-cell2" @click="unboding">解除绑定</button>
 	</view>
 </template>
 
@@ -65,6 +66,7 @@
 	import uniSection from '@/components/uni-section/uni-section.vue'
 	import  { personBaseInfoMaintainInit } from '@/api/baseInfo.js'
 	import  { personBaseInfoMaintain } from '@/api/baseInfo.js'
+	import  { unbounding } from '@/api/login.js'
 	export default {
 		 components: {uniNoticeBar,uniSection},
 		data() {
@@ -107,29 +109,59 @@
 				 console.log(this.secondPerType )
 			},
 			submit(){
-				personBaseInfoMaintain({personId:this.personId,secondPerType:this.secondPerType,
-				mobilePhone:this.mobilePhone,bankNo:this.bankNo,bankName:this.bankName
-				}).then(res => {
-					if(res.re === 1){
-						uni.showModal({
-						    title: '提示',
-							showCancel: false,
-							confirmColor: "#000000",
-						    content: '提交成功',
-						    success: function (res) {
-						        if (res.confirm) {
-							          uni.switchTab({
-							          	url:'../fist/fist'
-							          })
-						        } 
-						    }
-						});
-					}
-					
-					}).catch(err => {
+				if(this.mobilePhone === ''){
+					uni.showModal({
+					    title: '提示',
+						showCancel: false,
+						confirmColor: "#000000",
+					    content: '手机号不能为空',
+					    success: function (res) {
+					       
+					    }
+					});
+				}else{
+					personBaseInfoMaintain({personId:this.personId,secondPerType:this.secondPerType,
+					mobilePhone:this.mobilePhone,bankNo:this.bankNo,bankName:this.bankName
+					}).then(res => {
+						if(res.re === 1){
+							uni.showModal({
+							    title: '提示',
+								showCancel: false,
+								confirmColor: "#000000",
+							    content: '提交成功',
+							    success: function (res) {
+							        if (res.confirm) {
+								          uni.switchTab({
+								          	url:'../fist/fist'
+								          })
+							        } 
+							    }
+							});
+						}
 						
-					})
-					
+						}).catch(err => {
+							
+						})
+				}
+				},
+				unboding(){
+					unbounding({}).then(res => {
+							uni.showModal({
+							    title: '提示',
+								showCancel: false,
+								confirmColor: "#000000",
+							    content: '解绑成功',
+							    success: function (res) {
+							        if (res.confirm) {
+								          uni.navigateTo({
+								          	url:'../index/index'
+								          })
+							        } 
+							    }
+							});
+						}).catch(err => {
+							
+						})
 				}
 		}
 }

@@ -102,6 +102,14 @@
        background-color: #7acfa6;
 	
 	}
+	.button-cell2{
+	
+	   width: 45%;
+	   font-size: 28upx;
+	   margin-top: 10upx;
+	   background-color: #FF0000;
+	
+	}
 	.bottomLine2 {
 		width: 100%;
 		height: 2upx;
