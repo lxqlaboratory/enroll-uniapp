@@ -4,18 +4,20 @@
 </template>
 
 <script>
+	import { login } from '@/api/login.js'
 	export default {
 		data() {
 			return {
 				code: ''
 			}
 		},
-		onShow() {
+		onLoad() {
+		
              wx.login({
                success (res) {
-				   this.code = res.code
-                 login({code:res.code}).then(res => {
-                 	 if(res.reCode === '0'){
+				  
+                 login({code:res.code}).then(res2 => {
+                 	 if(res2.reCode === '0'){
 						 getApp().globalData.vueSessionId = res.sessionId
 						 console.log(getApp().globalData.vueSessionId)
                  		 uni.switchTab({
@@ -23,7 +25,7 @@
                  		 })
                  	 }else{
                  		 uni.navigateTo({
-                 		 	url:'../login/login?code='+this.code+''
+                 		 	url:'../login/login?code='+res.code+''
                  		 })
                  	 }
                  	
