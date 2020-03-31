@@ -2,11 +2,16 @@
 	<view>
 	<uni-section title="报名记录" type="line"></uni-section>
 	      <view v-for="items in ProjectInstanceList" :key="items.itemPersonId">
-		<uni-section :title="items.instanceName" type="line"></uni-section>
-		<uni-list  >
-			<uni-list-item :show-arrow="true" :title="items.itemName"  @click="entry(items.itemPersonId)"/>
-		</uni-list>
-		
+		<view  class="record-item" @click="entry(items.itemPersonId)">
+			<view class="f1">
+				<view class="condition">{{items.instanceName}}</view>
+				<view class="date">报名成功</view>
+			</view>
+			<view class="f1">
+		<view class="address">{{items.itemName}}</view>
+		<view class="date2">点击查看</view>
+		</view>
+		</view>
 		</view>
 		
 		
@@ -14,13 +19,14 @@
 </template>
 
 <script>
+	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	   import  { getApplyedEnrollInstanceItemList } from '@/api/manage.js'
 	   import uniSection from '@/components/uni-section/uni-section.vue'
 		export default {
 			  components: { uniList,
-		 uniListItem,uniSection},
+		 uniListItem,uniNoticeBar,uniSection},
 			data() {
 				return {
 					itemPersonId: '',

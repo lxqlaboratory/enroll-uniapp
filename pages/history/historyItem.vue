@@ -47,13 +47,13 @@
 			},
 		methods:{
 			donlowd(){
-				uni.downloadFile({
+				wx.downloadFile({
 				    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment?itemPersonId='+this.itemPersonId+'', 
 				    success: (res) => {
 				        if (res.statusCode === 200) {
 							    var filePath = res.tempFilePath;
 							            console.log(filePath);
-							        uni.openDocument({
+							        wx.openDocument({
 							                        filePath: filePath,
 							                        success: function(res) {
 							                            console.log('打开文档成功')

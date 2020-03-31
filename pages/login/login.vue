@@ -16,10 +16,10 @@
 		<view class="login-form">
 			<form @submit="formSubmit">
 				<view class="form-input">
-					<input type="text" v-model="loginName" placeholder="用户名" />
+					<input type="text" v-model="loginName" placeholder="请输入山东大学统一认证账号" />
 				</view>
 				<view class="form-input">
-					<input type="password" v-model="password" placeholder="密码" @focus="passwordF_B" @blur="passwordF_B" />
+					<input type="password" v-model="password" placeholder="请输入山东大学统一认证密码" @focus="passwordF_B" @blur="passwordF_B" />
 				</view>
 				<button type="primary" form-type="submit">绑定微信</button>
 			</form>

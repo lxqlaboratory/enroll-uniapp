@@ -2,8 +2,8 @@
 	export default {
 		globalData: {
 		            vueSessionId: '',
-//				enrollurl: 'https://enroll.sdu.edu.cn/func'
-				enrollurl: 'http://222.194.64.97/func'
+		enrollurl: 'https://enroll.sdu.edu.cn/func'
+				//enrollurl: 'http://222.194.64.97/func'
 		        },
 		onLaunch: function() {
 			console.log('App Launch')
@@ -135,5 +135,35 @@
 	  border: 2upx solid gray;
 	  border-radius: 8upx;
 	  background-color: white;
+	}
+	
+	
+	.record-item{
+	  margin: 5upx 15upx;
+	  padding: 15upx;
+	  background-color: white;
+	  border:1upx solid gainsboro;
+	  border-radius: 8upx;
+	  box-shadow: 1upx 1upx 2upx #333333; 
+	}
+	.f1{
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+	.condition{
+	  font-size: 30upx;
+	  color: black;
+	  font-weight: bold;
+	}
+	.date{
+	  font-size: 25upx;
+	}
+	.date2{
+	  font-size: 20upx;
+	}
+	.address{
+	  margin-top: 5upx;
+	  font-size: 30upx;
 	}
 </style>
