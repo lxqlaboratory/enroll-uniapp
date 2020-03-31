@@ -1,6 +1,7 @@
 <template>
 	<view>
 	<uni-section title="报名记录" type="line"></uni-section>
+	<view v-if="!showList">
 	      <view v-for="items in ProjectInstanceList" :key="items.itemPersonId">
 		<view  class="record-item" @click="entry(items.itemPersonId)">
 			<view class="f1">
@@ -13,7 +14,7 @@
 		</view>
 		</view>
 		</view>
-		
+		</view>
 		
 	</view>
 </template>
@@ -30,14 +31,23 @@
 			data() {
 				return {
 					itemPersonId: '',
-			
+			        showList: false,
 					ProjectInstanceList: []
 				}
 			},
 			onShow(){
 				
 				getApplyedEnrollInstanceItemList({}).then(res => {
-							this.ProjectInstanceList = res.data
+					if(res.re===1){
+						this.ProjectInstanceList = res.data
+						
+						if(this.ProjectInstanceList.length === 0){
+							this.showList = true
+						}else{
+							this.showList = false
+						}
+					}
+							
 							}).catch(err => {
 								
 							})

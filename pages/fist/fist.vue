@@ -79,7 +79,7 @@
 					
 					if(this.retType === 1){
 						this.showyemian = true;
-						this.showText = true;
+						this.showText = false;
 					}else if(this.retType === 2 ){
 						this.showText = false;
 					}
