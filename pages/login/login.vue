@@ -65,7 +65,7 @@
 				 }else{
 					 uni.showModal({
 					     title: '提示',
-					     content: '账户信息错误',
+					     content: '绑定登录错误',
 					     success: function (res) {
 					         if (res.confirm) {
 					             console.log('确定');

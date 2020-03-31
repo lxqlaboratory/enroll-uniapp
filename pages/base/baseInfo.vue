@@ -109,7 +109,7 @@
 				 console.log(this.secondPerType )
 			},
 			submit(){
-				if(this.mobilePhone === ''){
+				if(this.mobilePhone === ''||this.mobilePhone===undefined ||this.mobilePhone === 0||this.mobilePhone === '0'){
 					uni.showModal({
 					    title: '提示',
 						showCancel: false,
@@ -119,7 +119,31 @@
 					       
 					    }
 					});
-				}else{
+				}else if(this.secondPerType === '12' ||this.secondPerType === undefined || this.secondPerType === '13'||this.secondPerType === '14'||this.secondPerType === '21'||this.secondPerType === '31'){
+					if(this.bankNo === ''|| this.bankNo ===undefined){
+						uni.showModal({
+						    title: '提示',
+							showCancel: false,
+							confirmColor: "#000000",
+						    content: '银行卡号不能为空',
+						    success: function (res) {
+						       
+						    }
+						});
+					}
+					if(this.bankName === ''|| this.bankName === undefined){
+						uni.showModal({
+						    title: '提示',
+							showCancel: false,
+							confirmColor: "#000000",
+						    content: '银行名称不能为空',
+						    success: function (res) {
+						       
+						    }
+						});
+					}
+				}
+				else{
 					personBaseInfoMaintain({personId:this.personId,secondPerType:this.secondPerType,
 					mobilePhone:this.mobilePhone,bankNo:this.bankNo,bankName:this.bankName
 					}).then(res => {
