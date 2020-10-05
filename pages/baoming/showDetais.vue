@@ -55,7 +55,11 @@
 				donlowd(){
 					uni.downloadFile({
 					    url: getApp().globalData.enrollurl+'/enroll/downloadEnrollAppointment?itemPersonId='+this.itemPersonId+'', 
-					    success: (res) => {
+						header: {
+							"Content-Type": "application/json",
+							"Cookie": "JSESSIONID=" + getApp().globalData.vueSessionId
+						},
+						success: (res) => {
 					        if (res.statusCode === 200) {
 								var filePath = res.tempFilePath;
 								        console.log(filePath);
